@@ -11,31 +11,31 @@ const announcements = [
 
 const Marquee: React.FC = () => {
   return (
-    <div className="bg-gradient-to-r from-purple-900/50 via-black to-blue-900/50 border-b border-gray-800">
+    <div className="bg-gradient-to-r from-purple-900/30 via-black to-blue-900/30 border-b border-gray-800">
       <div className="relative flex overflow-x-hidden">
-        <div className="animate-marquee whitespace-nowrap py-2 flex items-center">
+        <div className="animate-marquee whitespace-nowrap py-3 flex items-center">
           {announcements.map((text, i) => (
-            <span key={i} className="text-sm text-gray-200 flex items-center mx-8 hover:text-indigo-400 transition-colors">
+            <span key={i} className="text-sm text-gray-200 flex items-center mx-12 hover:text-indigo-400 transition-colors duration-300">
               {text}
               <ArrowRight className="ml-2 h-4 w-4" />
             </span>
           ))}
           {announcements.map((text, i) => (
-            <span key={`repeat-${i}`} className="text-sm text-gray-200 flex items-center mx-8 hover:text-indigo-400 transition-colors">
+            <span key={`repeat-${i}`} className="text-sm text-gray-200 flex items-center mx-12 hover:text-indigo-400 transition-colors duration-300">
               {text}
               <ArrowRight className="ml-2 h-4 w-4" />
             </span>
           ))}
         </div>
-        <div className="absolute top-0 animate-marquee2 whitespace-nowrap py-2 flex items-center">
+        <div className="absolute top-0 animate-marquee2 whitespace-nowrap py-3 flex items-center">
           {announcements.map((text, i) => (
-            <span key={i} className="text-sm text-gray-200 flex items-center mx-8 hover:text-indigo-400 transition-colors">
+            <span key={i} className="text-sm text-gray-200 flex items-center mx-12 hover:text-indigo-400 transition-colors duration-300">
               {text}
               <ArrowRight className="ml-2 h-4 w-4" />
             </span>
           ))}
           {announcements.map((text, i) => (
-            <span key={`repeat-${i}`} className="text-sm text-gray-200 flex items-center mx-8 hover:text-indigo-400 transition-colors">
+            <span key={`repeat-${i}`} className="text-sm text-gray-200 flex items-center mx-12 hover:text-indigo-400 transition-colors duration-300">
               {text}
               <ArrowRight className="ml-2 h-4 w-4" />
             </span>
