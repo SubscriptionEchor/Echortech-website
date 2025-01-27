@@ -1,7 +1,8 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import { NavItem } from '../types';
 import { Menu, X } from 'lucide-react';
 import Marquee from './Marquee';
+import { useLocation, Link } from 'react-router-dom';
 
 const navigation: NavItem[] = [
   { title: 'Home', href: '/' },
@@ -13,6 +14,11 @@ const navigation: NavItem[] = [
 
 export default function Layout({ children }: { children: React.ReactNode }) {
   const [isMenuOpen, setIsMenuOpen] = React.useState(false);
+  const location = useLocation();
+
+  useEffect(() => {
+    window.scrollTo(0, 0);
+  }, [location.pathname]);
 
   return (
     <div className="min-h-screen bg-black text-gray-100">
@@ -32,13 +38,18 @@ export default function Layout({ children }: { children: React.ReactNode }) {
             <div className="hidden md:block">
               <div className="ml-10 flex items-baseline space-x-4">
                 {navigation.map((item) => (
-                  <a
+                  <Link
                     key={item.href}
                     href={item.href}
-                    className="px-3 py-2 rounded-md text-sm font-medium tracking-wide text-gray-300 hover:text-white hover:bg-gray-700 transition-colors"
+                    to={item.href}
+                    className={`px-3 py-2 rounded-md text-sm font-medium tracking-wide transition-colors ${
+                      location.pathname === item.href
+                        ? 'text-white bg-gray-700'
+                        : 'text-gray-300 hover:text-white hover:bg-gray-700'
+                    }`}
                   >
                     {item.title}
-                  </a>
+                  </Link>
                 ))}
               </div>
             </div>
@@ -56,13 +67,18 @@ export default function Layout({ children }: { children: React.ReactNode }) {
           <div className="md:hidden">
             <div className="px-2 pt-2 pb-3 space-y-1 sm:px-3">
               {navigation.map((item) => (
-                <a
+                <Link
                   key={item.href}
                   href={item.href}
-                  className="block px-3 py-2 rounded-md text-base font-medium text-gray-300 hover:text-white hover:bg-gray-700"
+                  to={item.href}
+                  className={`block px-3 py-2 rounded-md text-base font-medium ${
+                    location.pathname === item.href
+                      ? 'text-white bg-gray-700'
+                      : 'text-gray-300 hover:text-white hover:bg-gray-700'
+                  }`}
                 >
                   {item.title}
-                </a>
+                </Link>
               ))}
             </div>
           </div>
