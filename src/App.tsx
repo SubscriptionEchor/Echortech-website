@@ -1,5 +1,8 @@
 import React, { useState, useRef } from 'react';
 import Layout from './components/Layout';
+import { Plus, Minus } from 'lucide-react';
+import Hero from "./assets/images/hero-main.png";
+
 import { 
   ArrowRight, 
   MoveUpRight, 
@@ -200,7 +203,7 @@ function App() {
         >
           <div className="relative after:absolute after:inset-0 after:bg-gradient-to-b after:from-black/60 after:via-transparent after:to-black/60">
             <img
-              src="/src/assets/images/674269792e411d04a0a2cb93_Group-2610285.webp"
+              src={Hero}
               alt="Hero illustration"
               className="w-full h-auto opacity-85 contrast-75 saturate-75"
             />
@@ -777,6 +780,94 @@ function App() {
                     {item.description}
                   </p>
                 </div>
+              </motion.div>
+            ))}
+          </motion.div>
+        </div>
+      </section>
+
+       {/* FAQ Section */}
+       <section className="py-24 bg-[#0C0D0C] relative">
+        <div className="max-w-3xl mx-auto px-4 sm:px-6 lg:px-8">
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            className="text-center mb-12"
+          >
+            <h2 className="text-4xl font-medium text-white mb-4">
+              Frequently asked questions
+            </h2>
+            <p className="text-gray-400">
+              Don't see your answer? Get in touch via our communities.{' '}
+              <a href="#" className="text-purple-400 hover:text-purple-300">Discord</a>
+              {' '}/{' '}
+              <a href="#" className="text-purple-400 hover:text-purple-300">Facebook</a>
+            </p>
+          </motion.div>
+
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            className="space-y-3"
+          >
+            {[
+              {
+                question: "How do I get access to Blitzit?",
+                answer: "You can get access to Blitzit by signing up on our website. Once registered, you'll receive immediate access to our platform and all its features."
+              },
+              {
+                question: "Is Blitzit only for Desktop? Is there a mobile app version?",
+                answer: "Blitzit is available for both desktop and mobile devices. You can access it through any modern web browser on desktop, and we also offer native mobile apps for iOS and Android."
+              },
+              {
+                question: "How many machines can I install Blitzit on?",
+                answer: "With a standard license, you can install Blitzit on up to 3 devices simultaneously. Enterprise licenses offer unlimited device installations."
+              },
+              {
+                question: "Is Blitzit a free app?",
+                answer: "Blitzit offers both free and premium tiers. The free tier includes essential features, while premium tiers unlock advanced capabilities and increased usage limits."
+              },
+              {
+                question: "How can I buy Blitzit?",
+                answer: "You can purchase Blitzit directly through our website. We offer monthly and annual subscription plans, as well as lifetime licenses for individual developers and teams."
+              },
+              {
+                question: "How do I activate my account if I bought a lifetime option online?",
+                answer: "After purchasing a lifetime license, you'll receive an activation code via email. Simply log in to your account and enter the code in the 'License Management' section to activate."
+              },
+              {
+                question: "Can I integrate Blitzit with other apps?",
+                answer: "Yes, Blitzit offers extensive integration capabilities through our API and native integrations with popular development tools and services."
+              }
+            ].map((faq, index) => (
+              <motion.div
+                key={index}
+                initial={{ opacity: 0, y: 10 }}
+                whileInView={{ 
+                  opacity: 1,
+                  y: 0,
+                  transition: {
+                    delay: index * 0.1,
+                    duration: 0.5
+                  }
+                }}
+                viewport={{ once: true }}
+                className="group"
+              >
+                <details className="group">
+                  <summary className="flex items-center justify-between cursor-pointer p-4 rounded-lg bg-[#141414] border border-[#1A1D1A] hover:border-[#2A2F2A] transition-colors">
+                    <span className="text-white font-medium">{faq.question}</span>
+                    <span className="relative flex-shrink-0 ml-1.5 w-5 h-5">
+                      <Plus className="absolute inset-0 w-5 h-5 opacity-100 group-open:opacity-0 transition-opacity" />
+                      <Minus className="absolute inset-0 w-5 h-5 opacity-0 group-open:opacity-100 transition-opacity" />
+                    </span>
+                  </summary>
+                  <div className="px-4 pb-4 pt-2">
+                    <p className="text-gray-400">{faq.answer}</p>
+                  </div>
+                </details>
               </motion.div>
             ))}
           </motion.div>
