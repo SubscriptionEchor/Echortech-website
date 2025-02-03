@@ -1,7 +1,7 @@
 import React, { useState, useRef } from 'react';
 import Layout from './components/Layout';
 import { Plus, Minus } from 'lucide-react';
-import Hero from "./assets/images/hero-main.png";
+import Hero from "./assets/images/hero-main.svg";
 
 import { 
   ArrowRight, 
@@ -34,12 +34,12 @@ function App() {
   const handlePillHover = (index: number) => {
     const pill = pillRefs.current[index];
     if (pill) {
-      // Get pill and viewport dimensions
+      // Get pill dimensions and position
       const rect = pill.getBoundingClientRect();
       const viewportWidth = window.innerWidth;
       const viewportHeight = window.innerHeight;
       
-      // Video card dimensions (assuming 300px width and aspect ratio 3:4)
+      // Card dimensions
       const cardWidth = 300;
       const cardHeight = 400;
       
@@ -56,6 +56,8 @@ function App() {
       if (y + cardHeight > viewportHeight - 20) {
         y = viewportHeight - cardHeight - 20;
       }
+      
+      // Ensure minimum top spacing
       if (y < 20) {
         y = 20;
       }
@@ -67,311 +69,545 @@ function App() {
 
   const pills: PillData[] = [
     {
-      text: "AI & ML",
-      color: "bg-[#4ADE80]",
-      position: "absolute top-[15%] left-[15%]",
+      text: "AI Bots",
+      color: "bg-[#4ADE80]", 
+      position: "absolute top-[10%] left-[5%]",
       delay: 0,
       videoUrl: "https://cdn.prod.website-files.com/66bc64513c57e27bbe6bcd9c%2F66f45966f7cb7f7510e88350_Weem-transcode.mp4"
     },
     {
-      text: "Web3",
-      color: "bg-[#FFE14D]",
-      position: "absolute top-[38%] left-[28%]",
-      delay: 0.2,
-      videoUrl: "https://cdn.prod.website-files.com/66bc64513c57e27bbe6bcd9c%2F66f45966f7cb7f7510e88350_Weem-transcode.mp4"
-    },
-    {
-      text: "Cloud Native",
+      text: "NLP",
       color: "bg-[#818CF8]",
-      position: "absolute top-[62%] left-[12%]",
+      position: "absolute top-[10%] left-[28%]",
       delay: 0.4,
       videoUrl: "https://cdn.prod.website-files.com/66bc64513c57e27bbe6bcd9c%2F66f45966f7cb7f7510e88350_Weem-transcode.mp4"
     },
     {
-      text: "DevOps",
+      text: "AI Analytics",
       color: "bg-[#F472B6]",
-      position: "absolute top-[28%] left-[48%]",
+      position: "absolute top-[10%] left-[51%]",
       delay: 0.6,
       videoUrl: "https://cdn.prod.website-files.com/66bc64513c57e27bbe6bcd9c%2F66f45966f7cb7f7510e88350_Weem-transcode.mp4"
     },
     {
-      text: "Edge Computing",
-      color: "bg-[#FB923C]",
-      position: "absolute top-[85%] left-[38%]",
-      delay: 0.8,
-      videoUrl: "https://cdn.prod.website-files.com/66bc64513c57e27bbe6bcd9c%2F66f45966f7cb7f7510e88350_Weem-transcode.mp4"
-    },
-    {
-      text: "Smart Contracts",
-      color: "bg-[#22D3EE]",
-      position: "absolute top-[15%] right-[15%]",
-      delay: 1.0,
-      videoUrl: "https://cdn.prod.website-files.com/66bc64513c57e27bbe6bcd9c%2F66f45966f7cb7f7510e88350_Weem-transcode.mp4"
-    },
-    {
-      text: "DeFi",
+      text: "Speech AI",
       color: "bg-[#A78BFA]",
-      position: "absolute top-[62%] right-[18%]",
+      position: "absolute top-[10%] left-[74%]",
       delay: 1.2,
       videoUrl: "https://cdn.prod.website-files.com/66bc64513c57e27bbe6bcd9c%2F66f45966f7cb7f7510e88350_Weem-transcode.mp4"
     },
     {
-      text: "Custom CRM",
-      color: "bg-[#60A5FA]",
-      position: "absolute top-[38%] right-[25%]",
-      delay: 1.4,
-      videoUrl: "https://cdn.prod.website-files.com/66bc64513c57e27bbe6bcd9c%2F66f45966f7cb7f7510e88350_Weem-transcode.mp4"
-    },
-    {
-      text: "E-commerce",
-      color: "bg-[#F472B6]",
-      position: "absolute top-[85%] right-[28%]",
-      delay: 1.6,
-      videoUrl: "https://cdn.prod.website-files.com/66bc64513c57e27bbe6bcd9c%2F66f45966f7cb7f7510e88350_Weem-transcode.mp4"
-    },
-    {
-      text: "Data Analytics",
+      text: "RL AI",
       color: "bg-[#34D399]",
-      position: "absolute top-[50%] right-[42%]",
+      position: "absolute top-[30%] left-[5%]",
       delay: 1.8,
       videoUrl: "https://cdn.prod.website-files.com/66bc64513c57e27bbe6bcd9c%2F66f45966f7cb7f7510e88350_Weem-transcode.mp4"
     },
     {
-      text: "SaaS Platform",
+      text: "dApps",
       color: "bg-[#38BDF8]",
-      position: "absolute top-[72%] left-[58%]",
+      position: "absolute top-[30%] left-[28%]",
       delay: 2.0,
+      videoUrl: "https://cdn.prod.website-files.com/66bc64513c57e27bbe6bcd9c%2F66f45966f7cb7f7510e88350_Weem-transcode.mp4"
+    },
+    {
+      text: "Smart Contracts",
+      color: "bg-[#F43F5E]",
+      position: "absolute top-[30%] left-[51%]",
+      delay: 2.2,
+      videoUrl: "https://cdn.prod.website-files.com/66bc64513c57e27bbe6bcd9c%2F66f45966f7cb7f7510e88350_Weem-transcode.mp4"
+    },
+    {
+      text: "Web3 Gaming",
+      color: "bg-[#EC4899]",
+      position: "absolute top-[30%] left-[74%]",
+      delay: 2.6,
+      videoUrl: "https://cdn.prod.website-files.com/66bc64513c57e27bbe6bcd9c%2F66f45966f7cb7f7510e88350_Weem-transcode.mp4"
+    },
+    {
+      text: "DeFi",
+      color: "bg-[#10B981]",
+      position: "absolute top-[50%] left-[5%]",
+      delay: 2.8,
+      videoUrl: "https://cdn.prod.website-files.com/66bc64513c57e27bbe6bcd9c%2F66f45966f7cb7f7510e88350_Weem-transcode.mp4"
+    },
+    {
+      text: "NFT Market",
+      color: "bg-[#14B8A6]",
+      position: "absolute top-[50%] left-[28%]",
+      delay: 3.2,
+      videoUrl: "https://cdn.prod.website-files.com/66bc64513c57e27bbe6bcd9c%2F66f45966f7cb7f7510e88350_Weem-transcode.mp4"
+    },
+    {
+      text: "Computer Vision",
+      color: "bg-[#FB923C]",
+      position: "absolute top-[50%] left-[51%]",
+      delay: 3.4,
+      videoUrl: "https://cdn.prod.website-files.com/66bc64513c57e27bbe6bcd9c%2F66f45966f7cb7f7510e88350_Weem-transcode.mp4"
+    },
+    {
+      text: "Deep Learning",
+      color: "bg-[#22D3EE]",
+      position: "absolute top-[50%] left-[74%]",
+      delay: 3.6,
+      videoUrl: "https://cdn.prod.website-files.com/66bc64513c57e27bbe6bcd9c%2F66f45966f7cb7f7510e88350_Weem-transcode.mp4"
+    },
+    {
+      text: "Blockchain Security",
+      color: "bg-[#60A5FA]",
+      position: "absolute top-[70%] left-[5%]",
+      delay: 3.8,
+      videoUrl: "https://cdn.prod.website-files.com/66bc64513c57e27bbe6bcd9c%2F66f45966f7cb7f7510e88350_Weem-transcode.mp4"
+    },
+    {
+      text: "Data Mining",
+      color: "bg-[#F472B6]",
+      position: "absolute top-[70%] left-[28%]",
+      delay: 4.0,
+      videoUrl: "https://cdn.prod.website-files.com/66bc64513c57e27bbe6bcd9c%2F66f45966f7cb7f7510e88350_Weem-transcode.mp4"
+    },
+    {
+      text: "Machine Learning",
+      color: "bg-[#34D399]",
+      position: "absolute top-[70%] left-[51%]",
+      delay: 4.2,
+      videoUrl: "https://cdn.prod.website-files.com/66bc64513c57e27bbe6bcd9c%2F66f45966f7cb7f7510e88350_Weem-transcode.mp4"
+    },
+    {
+      text: "Neural Networks",
+      color: "bg-[#A78BFA]",
+      position: "absolute top-[70%] left-[74%]",
+      delay: 4.4,
       videoUrl: "https://cdn.prod.website-files.com/66bc64513c57e27bbe6bcd9c%2F66f45966f7cb7f7510e88350_Weem-transcode.mp4"
     }
   ];
 
   return (
     <Layout>
-      <div className="relative">
-        {/* Hero Section */}
-        <section className="relative min-h-[50vh] flex items-center justify-center overflow-hidden z-10">
-          <DotMatrix />
-          <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            <div className="text-center space-y-6">
-              <StatsChip text="5 LEGENDS BOOKED LAST MONTH" className="mb-6" />
-              
-              <motion.h1 
-                initial={{ opacity: 0, y: 20 }}
-                animate={{ opacity: 1, y: 0 }}
-                className="text-5xl md:text-7xl font-bold text-white leading-tight tracking-tight"
-              >
-                World-class brands
-                <br />
-                for tech founders.
-              </motion.h1>
+     <main className="min-h-screen bg-black text-white">
+        {/* Header Text */}
+        <div className="text-center pt-16 pb-8 px-4">
+          <div className="text-sm text-gray-400 mb-2">AI + Product Design Agency // Hyderabad</div>
+          <motion.h1 
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            className="text-5xl md:text-7xl font-bold mb-8 max-w-5xl mx-auto leading-[1.1]"
+          >
+            UX-First Design Agency
+            <br />
+            for B2B + AI Companies
+          </motion.h1>
+          <motion.p
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ delay: 0.2 }}
+            className="text-lg space-x-2"
+          >
+            <span>We launch</span>
+            <span className="text-[#4ADE80]">MVPs</span>
+            <span>redefine</span>
+            <span className="text-[#4ADE80]">existing products</span>
+            <span>& continuously dive into</span>
+            <span className="text-[#4ADE80]">customer development</span>
+          </motion.p>
+        </div>
 
-              <motion.div 
+        {/* Video/Image Section */}
+        <div className="relative max-w-6xl mx-auto px-4 pt-8">
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ delay: 0.3 }}
+            className="relative rounded-2xl overflow-hidden aspect-video bg-[#1A1A1A] group"
+          >
+            <video
+              autoPlay
+              loop
+              muted
+              playsInline
+              className="w-full h-full object-cover"
+            >
+              <source src="https://lazarev.kiev.ua/la24/la-reel--min.mp4" type="video/mp4" />
+            </video>
+          </motion.div>
+        </div>
+      </main>
+
+      {/* Who We Are Section */}
+      <section className="py-32 bg-black relative">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
+            {/* Left Column - Logo and Visual */}
+            <motion.div
+              initial={{ opacity: 0, x: -20 }}
+              whileInView={{ opacity: 1, x: 0 }}
+              viewport={{ once: true }}
+              className="relative"
+            >
+              <div className="relative aspect-square rounded-3xl bg-gradient-to-br from-blue-50/5 to-blue-100/5 p-12 overflow-hidden border border-white/5">
+                <div className="absolute inset-0 bg-[radial-gradient(circle_at_center,rgba(99,102,241,0.08)_0%,transparent_100%)]" />
+                <div className="relative h-full flex flex-col justify-between">
+                  {/* Logo */}
+                  <div className="flex items-center gap-4">
+                    <div className="w-12 h-12 rounded-full bg-gradient-to-br from-blue-200/20 to-blue-500/20 flex items-center justify-center">
+                      <div className="w-8 h-8 rounded-full bg-gradient-to-br from-blue-200 to-blue-500" />
+                    </div>
+                    <h3 className="text-3xl font-medium bg-gradient-to-r from-blue-200 to-blue-500 bg-clip-text text-transparent">
+                      eloqwnt
+                    </h3>
+                  </div>
+                  
+                  {/* Abstract Elements */}
+                  <div className="absolute inset-0 flex items-center justify-center">
+                    <div className="relative w-64 h-64">
+                      {[...Array(5)].map((_, i) => (
+                        <motion.div
+                          key={i}
+                          className="absolute w-full h-full rounded-full border border-blue-200/10"
+                          style={{
+                            transform: `scale(${1 - i * 0.15}) rotate(${i * 15}deg)`
+                          }}
+                          animate={{
+                            rotate: [0, 360],
+                            scale: [1 - i * 0.15, 1 - i * 0.1, 1 - i * 0.15]
+                          }}
+                          transition={{
+                            duration: 20 + i * 5,
+                            repeat: Infinity,
+                            ease: "linear"
+                          }}
+                        />
+                      ))}
+                      <div className="absolute inset-0 flex items-center justify-center">
+                        <div className="w-24 h-24 rounded-full bg-gradient-to-br from-blue-200/20 to-blue-500/20 flex items-center justify-center">
+                          <div className="w-16 h-16 rounded-full bg-gradient-to-br from-blue-200/40 to-blue-500/40" />
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </motion.div>
+
+            {/* Right Column - Content */}
+            <motion.div
+              initial={{ opacity: 0, x: 20 }}
+              whileInView={{ opacity: 1, x: 0 }}
+              viewport={{ once: true }}
+              className="space-y-8"
+            >
+              <motion.h2
                 initial={{ opacity: 0, y: 20 }}
-                animate={{ opacity: 1, y: 0 }}
-                transition={{ delay: 0.2 }}
-                className="flex flex-col sm:flex-row items-center justify-center gap-4"
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true }}
+                className="text-5xl md:text-6xl font-medium text-white leading-tight"
+              >
+                We are design-first creative studio
+              </motion.h2>
+              
+              <div className="space-y-6">
+                <motion.p
+                  initial={{ opacity: 0, y: 20 }}
+                  whileInView={{ opacity: 1, y: 0 }}
+                  viewport={{ once: true }}
+                  transition={{ delay: 0.1 }}
+                  className="text-xl text-gray-300 leading-relaxed"
+                >
+                  We believe in the power of purposeful design to solve real business challenges. Every line, color, and interaction is crafted with intent, creating experiences that connect and drive impact. Our mission is to turn ideas into strategic, visual solutions that resonate deeply and support our clients' goals.
+                </motion.p>
+
+                <motion.p
+                  initial={{ opacity: 0, y: 20 }}
+                  whileInView={{ opacity: 1, y: 0 }}
+                  viewport={{ once: true }}
+                  transition={{ delay: 0.2 }}
+                  className="text-xl text-gray-300 leading-relaxed"
+                >
+                  At Eloqwnt, design isn't just a visual; it's an influential tool that helps brands achieve lasting success.
+                </motion.p>
+              </div>
+              
+              <motion.div
+                initial={{ opacity: 0, y: 20 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true }}
+                transition={{ delay: 0.3 }}
               >
                 <motion.a
-                  whileHover={{ scale: 1.05 }}
-                  whileTap={{ scale: 0.95 }}
-                  href="#pricing"
-                  className="group inline-flex items-center px-6 py-3 rounded-lg bg-white text-black hover:bg-gray-100 transition-colors"
+                  href="/about"
+                  whileHover={{ gap: '1rem' }}
+                  className="inline-flex items-center gap-2 px-8 py-4 bg-white text-black rounded-full font-medium transition-all duration-300"
                 >
-                  STARTING AT $1000
-                  <ArrowRight className="ml-2 h-5 w-5 transition-transform group-hover:translate-x-1" />
-                </motion.a>
-                
-                <motion.a
-                  whileHover={{ scale: 1.05 }}
-                  whileTap={{ scale: 0.95 }}
-                  href="#work"
-                  className="group inline-flex items-center px-6 py-3 rounded-lg bg-gray-800 text-white hover:bg-gray-700 transition-colors"
-                >
-                  VIEW WORK
-                  <MoveUpRight className="ml-2 h-5 w-5 transition-transform group-hover:translate-x-1 group-hover:-translate-y-1" />
+                  About us
+                  <div className="w-5 h-5 rounded-full bg-gradient-to-br from-blue-200 to-blue-500" />
                 </motion.a>
               </motion.div>
-            </div>
+            </motion.div>
           </div>
-        </section>
+        </div>
+      </section>
 
-        <motion.div
-          initial={{ opacity: 0, y: 20 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ delay: 0.4 }}
-          className="-mt-20 relative"
-        >
-          <div className="relative after:absolute after:inset-0 after:bg-gradient-to-b after:from-black/60 after:via-transparent after:to-black/60">
-            <img
-              src={Hero}
-              alt="Hero illustration"
-              className="w-full h-auto opacity-85 contrast-75 saturate-75"
-            />
-          </div>
-        </motion.div>
-      </div>
-
-      {/* Tools Section */}
-      <section className="py-24 bg-black/80 relative">
+      {/* Our Works Section */}
+      <section className="py-32 bg-black relative">
+        <div className="absolute inset-0">
+          <div className="absolute inset-0 bg-[radial-gradient(circle_at_center,rgba(99,102,241,0.08)_0%,transparent_100%)]" />
+        </div>
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="text-center mb-16">
-            <motion.h2 
-              initial={{ opacity: 0, y: 20 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
-              className="text-3xl font-bold text-white mb-4"
-            >
-              Industry-Leading Tools
-            </motion.h2>
-            <motion.p 
-              initial={{ opacity: 0, y: 20 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
-              transition={{ delay: 0.1 }}
-              className="text-gray-400 max-w-2xl mx-auto"
-            >
-              We leverage cutting-edge technologies and tools to deliver exceptional results
-            </motion.p>
-          </div>
-          
-          <motion.div 
+          <motion.div
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
-            transition={{ delay: 0.2 }}
-            className="grid grid-cols-3 md:grid-cols-6 lg:grid-cols-8 gap-6 items-center justify-items-center"
+            className="space-y-8 mb-16"
           >
+            <div className="flex items-center justify-between">
+              <h2 className="text-4xl md:text-5xl font-medium text-white">
+                Selected Works
+              </h2>
+              <motion.a
+                href="/works"
+                whileHover={{ gap: '1rem' }}
+                className="hidden md:inline-flex items-center gap-2 px-6 py-3 rounded-full bg-white/10 text-white hover:bg-white/20 transition-colors"
+              >
+                View All Works
+                <ArrowRight className="w-5 h-5" />
+              </motion.a>
+            </div>
+          </motion.div>
+
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
             {[
               {
-                name: "VS Code",
-                url: "https://cdn.jsdelivr.net/gh/simple-icons/simple-icons/icons/visualstudiocode.svg"
+                title: "AI-Powered Analytics Platform",
+                category: "AI & Machine Learning",
+                image: "https://images.unsplash.com/photo-1639762681485-074b7f938ba0?auto=format&fit=crop&q=80&w=2232",
+                gradient: "from-purple-500/20 to-blue-500/20",
+                year: "2024"
               },
               {
-                name: "Figma",
-                url: "https://raw.githubusercontent.com/simple-icons/simple-icons/develop/icons/figma.svg"
+                title: "DeFi Trading Protocol",
+                category: "Blockchain",
+                image: "https://images.unsplash.com/photo-1639762681057-408e52192e55?auto=format&fit=crop&q=80&w=2232",
+                gradient: "from-emerald-500/20 to-blue-500/20",
+                year: "2024"
               },
               {
-                name: "Docker",
-                url: "https://raw.githubusercontent.com/simple-icons/simple-icons/develop/icons/docker.svg"
+                title: "NFT Marketplace",
+                category: "Web3",
+                image: "https://images.unsplash.com/photo-1639762681286-667bed832b47?auto=format&fit=crop&q=80&w=2232",
+                gradient: "from-pink-500/20 to-purple-500/20",
+                year: "2023"
               },
               {
-                name: "Kubernetes",
-                url: "https://raw.githubusercontent.com/simple-icons/simple-icons/develop/icons/kubernetes.svg"
-              },
-              {
-                name: "ChatGPT",
-                url: "https://raw.githubusercontent.com/simple-icons/simple-icons/develop/icons/openai.svg"
-              },
-              {
-                name: "TensorFlow",
-                url: "https://raw.githubusercontent.com/simple-icons/simple-icons/develop/icons/tensorflow.svg"
-              },
-              {
-                name: "PyTorch",
-                url: "https://raw.githubusercontent.com/simple-icons/simple-icons/develop/icons/pytorch.svg"
-              },
-              {
-                name: "Hugging Face",
-                url: "https://raw.githubusercontent.com/simple-icons/simple-icons/develop/icons/huggingface.svg"
-              },
-              {
-                name: "Ethereum",
-                url: "https://raw.githubusercontent.com/simple-icons/simple-icons/develop/icons/ethereum.svg"
-              },
-              {
-                name: "Solidity",
-                url: "https://raw.githubusercontent.com/simple-icons/simple-icons/develop/icons/solidity.svg"
-              },
-              {
-                name: "Web3.js",
-                url: "https://raw.githubusercontent.com/simple-icons/simple-icons/develop/icons/web3dotjs.svg"
-              },
-              {
-                name: "Polygon",
-                url: "https://raw.githubusercontent.com/simple-icons/simple-icons/develop/icons/polygon.svg"
-              },
-              {
-                name: "GitHub",
-                url: "https://raw.githubusercontent.com/simple-icons/simple-icons/develop/icons/github.svg"
-              },
-              {
-                name: "AWS",
-                url: "https://cdn.jsdelivr.net/gh/simple-icons/simple-icons/icons/amazonaws.svg"
-              },
-              {
-                name: "Azure",
-                url: "https://cdn.jsdelivr.net/gh/simple-icons/simple-icons/icons/microsoftazure.svg"
-              },
-              {
-                name: "Google Cloud",
-                url: "https://raw.githubusercontent.com/simple-icons/simple-icons/develop/icons/googlecloud.svg"
+                title: "Smart Contract Platform",
+                category: "Blockchain",
+                image: "https://images.unsplash.com/photo-1639762681723-85440c947dc6?auto=format&fit=crop&q=80&w=2232",
+                gradient: "from-blue-500/20 to-cyan-500/20",
+                year: "2023"
               }
-            ].map((tool, index) => (
+            ].map((work, index) => (
               <motion.div
-                key={tool.name}
-                whileHover={{ scale: 1.1 }}
+                key={index}
                 initial={{ opacity: 0, y: 20 }}
                 whileInView={{ 
-                  opacity: 1, 
+                  opacity: 1,
                   y: 0,
                   transition: {
                     delay: index * 0.1,
-                    duration: 0.5,
-                    ease: "easeOut"
-                  }
-                }}
-                animate={{
-                  y: [0, -8, 0],
-                  transition: {
-                    duration: 3,
-                    repeat: Infinity,
-                    repeatType: "reverse",
-                    ease: "easeInOut",
-                    delay: index * 0.2
+                    duration: 0.5
                   }
                 }}
                 viewport={{ once: true }}
-                className="relative group w-full"
+                className="group relative"
               >
-                <motion.div
-                  className="aspect-square w-full max-w-[80px] mx-auto flex items-center justify-center p-4 rounded-lg bg-gray-900/50 border border-gray-800 backdrop-blur-sm transition-all duration-300"
-                  whileHover={{
-                    borderColor: "rgba(99, 102, 241, 0.5)",
-                    backgroundColor: "rgba(17, 24, 39, 0.7)",
-                    transition: { duration: 0.2 }
-                  }}
-                >
-                  <img
-                    src={tool.url}
-                    alt={tool.name}
-                    className="w-8 h-8 object-contain filter invert brightness-75 group-hover:brightness-100 transition-all"
-                  />
-                </motion.div>
-                <motion.div 
-                  className="absolute -bottom-3 left-1/2 -translate-x-1/2 whitespace-nowrap"
-                  initial={{ opacity: 0, y: -5 }}
-                  animate={{ opacity: 0 }}
-                  whileHover={{ opacity: 1, y: 8 }}
-                  transition={{ duration: 0.2 }}
-                >
-                  <span className="px-2 py-1 text-xs bg-gray-800 text-gray-200 rounded-md shadow-lg">{tool.name}</span>
-                </motion.div>
+                <div className="relative aspect-[4/3] rounded-2xl overflow-hidden">
+                  {/* Background Image */}
+                  <div className="absolute inset-0">
+                    <img
+                      src={work.image}
+                      alt={work.title}
+                      className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110"
+                    />
+                    <div className="absolute inset-0 bg-black/50" />
+                    <div className={`absolute inset-0 bg-gradient-to-br ${work.gradient} opacity-40`} />
+                  </div>
+
+                  {/* Content Overlay */}
+                  <div className="absolute inset-0 p-8 flex flex-col justify-between">
+                    <div className="flex items-center justify-between">
+                      <span className="px-4 py-2 rounded-full bg-white/10 backdrop-blur-sm text-sm text-white">
+                        {work.category}
+                      </span>
+                      <span className="text-white/80 text-sm">
+                        {work.year}
+                      </span>
+                    </div>
+
+                    <div className="space-y-4">
+                      <h3 className="text-2xl font-medium text-white">
+                        {work.title}
+                      </h3>
+                      <motion.div
+                        initial={{ opacity: 0, y: 20 }}
+                        whileInView={{ opacity: 1, y: 0 }}
+                        viewport={{ once: true }}
+                        className="flex items-center gap-2"
+                      >
+                        <span className="text-white/80">View Case Study</span>
+                        <motion.div
+                          className="w-8 h-8 rounded-full bg-white flex items-center justify-center"
+                          whileHover={{ scale: 1.1 }}
+                        >
+                          <ArrowRight className="w-4 h-4 text-black" />
+                        </motion.div>
+                      </motion.div>
+                    </div>
+                  </div>
+
+                  {/* Hover Effects */}
+                  <div className="absolute inset-0 opacity-0 group-hover:opacity-100 transition-opacity duration-300">
+                    <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/50 to-transparent" />
+                  </div>
+                </div>
               </motion.div>
             ))}
+          </div>
+
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            className="mt-12 text-center md:hidden"
+          >
+            <motion.a
+              href="/works"
+              whileHover={{ gap: '1rem' }}
+              className="inline-flex items-center gap-2 px-6 py-3 rounded-full bg-white/10 text-white hover:bg-white/20 transition-colors"
+            >
+              View All Works
+              <ArrowRight className="w-5 h-5" />
+            </motion.a>
           </motion.div>
         </div>
       </section>
 
-      {/* Floating Buttons Section */}
-      <section className="min-h-screen bg-black relative overflow-hidden flex items-center justify-center">
+      {/* Services Section */}
+      <section className="py-32 bg-black relative overflow-hidden">
         <div className="absolute inset-0">
           <div className="absolute inset-0 bg-[radial-gradient(circle_at_center,rgba(99,102,241,0.08)_0%,rgba(0,0,0,0.95)_100%)]" />
-          <div className="absolute inset-0 bg-[linear-gradient(to_right,rgba(0,0,0,0.8)_0%,transparent_50%,rgba(0,0,0,0.8)_100%)]" />
         </div>
-        <div className="relative w-full max-w-[1600px] mx-auto px-4">
-          <div className="relative h-[80vh] flex items-center justify-center">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            className="space-y-8 mb-20"
+          >
+            <h2 className="text-4xl md:text-5xl font-medium text-[#C3FFA6]">
+              Our Solutions
+            </h2>
+            <p className="text-xl text-gray-300 max-w-4xl">
+              Whether you need to design your first MVP to get funding, redesign your product to improve business 
+              metrics, or get a remote design team to grow faster - our product designers are here to help.
+            </p>
+          </motion.div>
+
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
+            {[
+              {
+                label: "FOR STARTUPS",
+                title: "MVP Design",
+                description: "Create a digital product, attract investors and new clients",
+                gradient: "from-[#E4D7FF] to-[#D7DEFF]",
+                icon: "https://framerusercontent.com/images/psdpn5uV0mzKkOD5mWiPfZ3mo.png"
+              },
+              {
+                label: "FOR STARTUPS & EXISTING COMPANIES",
+                title: "Product Redesign",
+                description: "Get a fresh look, improved user experience, or enhanced functionality",
+                gradient: "from-[#E9D7FF] to-[#D7E4FF]",
+                icon: "https://framerusercontent.com/images/PIlOMNJgWkDXjuZ6YhFXLCFaA.png"
+              },
+              {
+                label: "FOR EXISTING COMPANIES",
+                title: "Team Extension",
+                description: "Expand your team with our dedicated and talented design experts",
+                gradient: "from-[#EBFFB0] to-[#D0FF94]",
+                icon: "https://framerusercontent.com/images/Ry1tKKT9ztEVxDPwxjGWkFn4.png"
+              }
+            ].map((service, index) => (
+              <motion.div
+                key={index}
+                initial={{ opacity: 0, y: 20 }}
+                whileInView={{ 
+                  opacity: 1,
+                  y: 0,
+                  transition: {
+                    delay: index * 0.1,
+                    duration: 0.5
+                  }
+                }}
+                viewport={{ once: true }}
+                className="group relative"
+              >
+                <div className={`p-8 rounded-3xl bg-gradient-to-br ${service.gradient} h-full transition-all duration-300`}>
+                  <div className="space-y-6">
+                    <div className="flex justify-between items-start">
+                      <span className="text-sm font-medium text-black/80">
+                        {service.label}
+                      </span>
+                      <img 
+                        src={service.icon} 
+                        alt={service.title}
+                        className="w-12 h-12 object-contain"
+                      />
+                    </div>
+                    
+                    <div className="space-y-4">
+                      <h3 className="text-3xl font-bold text-black">
+                        {service.title}
+                      </h3>
+                      <p className="text-black/80">
+                        {service.description}
+                      </p>
+                    </div>
+
+                    <motion.a
+                      href="#"
+                      whileHover={{ gap: '1rem' }}
+                      className="inline-flex items-center gap-2 px-6 py-3 bg-black text-white rounded-full font-medium transition-all duration-300"
+                    >
+                      Explore
+                      <ArrowRight className="w-5 h-5" />
+                    </motion.a>
+                  </div>
+                </div>
+              </motion.div>
+            ))}
+          </div>
+        </div>
+      </section>
+          
+      {/* Pills Grid */}
+      <section className="py-24 bg-black relative">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="mt-24">
+            <motion.div
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              className="space-y-4 mb-16"
+            >
+              <h3 className="text-2xl text-white font-medium">
+                Explore Our Technologies
+              </h3>
+              <p className="text-gray-400">
+                Discover our comprehensive range of cutting-edge solutions and technologies
+              </p>
+            </motion.div>
+
+            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
             {pills.map((pill, index) => (
-              <div key={index} className={`${pill.position} w-fit`}>
+              <div key={index} className="w-full">
                 <motion.div
                   ref={el => pillRefs.current[index] = el}
                   onHoverStart={() => handlePillHover(index)}
@@ -379,23 +615,15 @@ function App() {
                   initial={{ opacity: 0, y: 20 }}
                   animate={{ 
                     opacity: 1,
-                    y: [0, -15, 0],
-                    x: [0, index % 3 === 0 ? 5 : index % 3 === 1 ? -5 : 0, 0],
+                    y: [0, -8, 0],
                     rotate: [0, index % 2 === 0 ? 2 : -2, 0],
                     transition: {
                       y: {
-                        duration: 4,
+                        duration: 3,
                         repeat: Infinity,
                         repeatType: "reverse",
                         ease: [0.4, 0, 0.2, 1],
                         delay: index * 0.3
-                      },
-                      x: {
-                        duration: 3.5,
-                        repeat: Infinity,
-                        repeatType: "reverse",
-                        ease: [0.4, 0, 0.2, 1],
-                        delay: index * 0.4
                       },
                       rotate: {
                         duration: 5,
@@ -410,13 +638,13 @@ function App() {
                       }
                     }
                   }}
-                  className="relative hover:z-10 will-change-transform"
+                  className="relative hover:z-10 will-change-transform w-full"
                 >
-                  <div className={`rounded-full ${pill.color} pl-3 pr-6 py-2 flex items-center gap-3 shadow-lg backdrop-blur-sm`}>
+                  <div className={`rounded-full ${pill.color} pl-3 pr-6 py-2 flex items-center gap-3 shadow-lg backdrop-blur-sm w-full justify-between`}>
                     <div className="bg-black/90 rounded-full p-1.5">
                       <ArrowRight className="w-4 h-4 text-white" />
                     </div>
-                    <span className="text-xl font-medium text-black">
+                    <span className="text-base sm:text-lg lg:text-xl font-medium text-black flex-1 text-center">
                       {pill.text}
                     </span>
                   </div>
@@ -502,6 +730,8 @@ function App() {
                 </motion.div>
               </div>
             ))}
+            </div>
+
             {pills.map((pill, index) => (
               <VideoCard
                 key={index}
@@ -528,82 +758,8 @@ function App() {
         </div>
       </section>
 
-      {/* Features Section */}
-      <section className="py-24 bg-[#0C0D0C] relative">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <motion.h2 
-            initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            className="text-4xl md:text-5xl font-medium text-[#C3FFA6] mb-20"
-          >
-            Features
-          </motion.h2>
-          
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-1">
-            {[
-              {
-                icon: <Monitor className="w-10 h-10 text-[#C3FFA6]" />,
-                title: "Flexible Environments",
-                description: "Bring your own image or build one in Python, scale resources as needed, and leverage state-of-the-art GPUs like H100s & A100s for high-performance computing."
-              },
-              {
-                icon: <Boxes className="w-10 h-10 text-[#C3FFA6]" />,
-                title: "Seamless Integrations",
-                description: "Export function logs to Datadog or any OpenTelemetry-compatible provider, and easily mount cloud storage from major providers (S3, R2 etc.)."
-              },
-              {
-                icon: <Database className="w-10 h-10 text-[#C3FFA6]" />,
-                title: "Data Storage",
-                description: "Manage data effortlessly with storage solutions (network volumes, key-value stores and queues). Provision storage types and interact with them using familiar Python syntax."
-              },
-              {
-                icon: <Clock className="w-10 h-10 text-[#C3FFA6]" />,
-                title: "Job Scheduling",
-                description: "Take control of your workloads with powerful scheduling. Set up cron jobs, retries, and timeouts, or use batching to optimize resource usage."
-              },
-              {
-                icon: <Globe className="w-10 h-10 text-[#C3FFA6]" />,
-                title: "Web Endpoints",
-                description: "Deploy and manage web services with ease. Create custom domains, set up streaming and websockets, and serve functions as secure HTTPS endpoints."
-              },
-              {
-                icon: <Bug className="w-10 h-10 text-[#C3FFA6]" />,
-                title: "Built-In Debugging",
-                description: "Troubleshoot efficiently with built-in debugging tools. Use the modal shell for interactive debugging and set breakpoints to pinpoint issues quickly."
-              }
-            ].map((feature, index) => (
-              <motion.div
-                key={index}
-                initial={{ opacity: 0, y: 20 }}
-                whileInView={{ 
-                  opacity: 1,
-                  y: 0,
-                  transition: {
-                    delay: index * 0.1,
-                    duration: 0.5
-                  }
-                }}
-                viewport={{ once: true }}
-                className="relative group"
-              >
-                <div className="p-8 rounded-none border-[0.5px] border-[#2A2F2A] h-full transition-all duration-300 hover:bg-[#1A1D1A]">
-                  <div className="mb-8">{feature.icon}</div>
-                  <h3 className="text-xl font-medium text-white mb-4">
-                    {feature.title}
-                  </h3>
-                  <p className="text-[#8A8F8A] leading-relaxed text-sm">
-                    {feature.description}
-                  </p>
-                </div>
-              </motion.div>
-            ))}
-          </div>
-        </div>
-      </section>
-
-      {/* Height Introduction Section */}
-      <section className="py-24 bg-[#0C0D0C] relative">
+        {/* Height Introduction Section */}
+        <section className="py-24 bg-[#0C0D0C] relative">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
             <motion.div
@@ -693,8 +849,8 @@ function App() {
         </div>
       </section>
 
-      {/* Data Standard Section */}
-      <section className="py-24 bg-[#0C0D0C] relative">
+         {/* Data Standard Section */}
+         <section className="py-24 bg-[#0C0D0C] relative">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center max-w-3xl mx-auto mb-24">
             <motion.h2 
@@ -786,6 +942,135 @@ function App() {
         </div>
       </section>
 
+      {/* Testimonials Section */}
+      <section className="py-24 bg-[#0C0D0C] relative">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            className="text-center max-w-3xl mx-auto mb-20"
+          >
+            <span className="inline-block px-4 py-2 rounded-full bg-white/5 text-white/80 text-sm mb-6">
+              Client Testimonials
+            </span>
+            <h2 className="text-4xl md:text-5xl font-medium text-white mb-6">
+              Trusted by Industry Leaders
+            </h2>
+            <p className="text-xl text-gray-400">
+              See what our clients have to say about their experience working with us
+            </p>
+          </motion.div>
+          
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+            {[
+              {
+                name: "Sarah Chen",
+                role: "CTO at TechFlow",
+                image: "https://images.unsplash.com/photo-1487412720507-e7ab37603c6f?auto=format&fit=crop&q=80&w=200&h=200",
+                testimonial: "The AI solutions provided by the team have transformed our business operations. The attention to detail and technical expertise were outstanding.",
+                company: {
+                  logo: "https://framerusercontent.com/images/nXLK1wAp5ZD7QYaXiRz8kZbmE.png",
+                  background: "bg-purple-500/10"
+                }
+              },
+              {
+                name: "Michael Rodriguez",
+                role: "Founder at BlockChain Ventures",
+                image: "https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?auto=format&fit=crop&q=80&w=200&h=200",
+                testimonial: "Their blockchain expertise helped us launch our DeFi platform ahead of schedule. The team's technical knowledge and problem-solving abilities are exceptional.",
+                company: {
+                  logo: "https://framerusercontent.com/images/QVKF2PqQba3U5UZTOXJTYgbw8.png",
+                  background: "bg-blue-500/10"
+                }
+              },
+              {
+                name: "Emily Watson",
+                role: "Product Director at DataSense",
+                image: "https://images.unsplash.com/photo-1494790108377-be9c29b29330?auto=format&fit=crop&q=80&w=200&h=200",
+                testimonial: "The machine learning models developed by the team have significantly improved our data analytics capabilities. Their expertise in AI is truly remarkable.",
+                company: {
+                  logo: "https://framerusercontent.com/images/BAXywubxN8sAhfJg9YqGVpvpzg.png",
+                  background: "bg-emerald-500/10"
+                }
+              },
+              {
+                name: "David Kim",
+                role: "CEO at SmartContract Solutions",
+                image: "https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?auto=format&fit=crop&q=80&w=200&h=200",
+                testimonial: "Their smart contract development and auditing services are top-notch. They helped us create a secure and efficient blockchain infrastructure.",
+                company: {
+                  logo: "https://framerusercontent.com/images/Hg2OUW6aQ0EjgwuqRrVQ3W9ho.png",
+                  background: "bg-indigo-500/10"
+                }
+              },
+              {
+                name: "Lisa Zhang",
+                role: "Head of Innovation at FutureTech",
+                image: "https://images.unsplash.com/photo-1438761681033-6461ffad8d80?auto=format&fit=crop&q=80&w=200&h=200",
+                testimonial: "The team's expertise in both AI and blockchain helped us create innovative solutions that set us apart in the market.",
+                company: {
+                  logo: "https://framerusercontent.com/images/nXLK1wAp5ZD7QYaXiRz8kZbmE.png",
+                  background: "bg-rose-500/10"
+                }
+              },
+              {
+                name: "James Wilson",
+                role: "CTO at Web3 Innovations",
+                image: "https://images.unsplash.com/photo-1500648767791-00dcc994a43e?auto=format&fit=crop&q=80&w=200&h=200",
+                testimonial: "Their deep understanding of Web3 technologies helped us build a revolutionary NFT marketplace. The team's dedication to quality is unmatched.",
+                company: {
+                  logo: "https://framerusercontent.com/images/QVKF2PqQba3U5UZTOXJTYgbw8.png",
+                  background: "bg-cyan-500/10"
+                }
+              }
+            ].map((testimonial, index) => (
+              <motion.div
+                key={index}
+                initial={{ opacity: 0, y: 20 }}
+                whileInView={{ 
+                  opacity: 1,
+                  y: 0,
+                  transition: {
+                    delay: index * 0.1,
+                    duration: 0.5
+                  }
+                }}
+                viewport={{ once: true }}
+                className="relative group rounded-2xl bg-[#141414] p-8 border border-[#2A2F2A] hover:border-white/20 transition-all duration-300"
+              >
+                <div className="flex flex-col h-full">
+                  <div className={`w-12 h-12 rounded-lg ${testimonial.company.background} p-2 mb-8`}>
+                    <img
+                      src={testimonial.company.logo}
+                      alt="Company logo"
+                      className="w-full h-full object-contain"
+                    />
+                  </div>
+                  
+                  <p className="text-gray-300 leading-relaxed mb-8 flex-grow text-lg">
+                    "{testimonial.testimonial}"
+                  </p>
+                  
+                  <div className="flex items-center gap-4">
+                    <img
+                      src={testimonial.image}
+                      alt={testimonial.name}
+                      className="w-12 h-12 rounded-full object-cover"
+                    />
+                    <div>
+                      <h4 className="text-white font-medium text-lg">{testimonial.name}</h4>
+                      <p className="text-gray-400 text-sm">{testimonial.role}</p>
+                    </div>
+                  </div>
+                </div>
+              </motion.div>
+            ))}
+          </div>
+        </div>
+      </section>
+
+
        {/* FAQ Section */}
        <section className="py-24 bg-[#0C0D0C] relative">
         <div className="max-w-3xl mx-auto px-4 sm:px-6 lg:px-8">
@@ -814,32 +1099,28 @@ function App() {
           >
             {[
               {
-                question: "How do I get access to Blitzit?",
-                answer: "You can get access to Blitzit by signing up on our website. Once registered, you'll receive immediate access to our platform and all its features."
+                question: "How long does it take to get started?",
+                answer: "We can start working on your project within 48 hours of initial contact. Our streamlined onboarding process ensures we can quickly understand your needs and begin delivering value. After the initial consultation, we'll provide you with a detailed timeline and project roadmap."
               },
               {
-                question: "Is Blitzit only for Desktop? Is there a mobile app version?",
-                answer: "Blitzit is available for both desktop and mobile devices. You can access it through any modern web browser on desktop, and we also offer native mobile apps for iOS and Android."
+                question: "What is your typical working process?",
+                answer: "Our process typically involves four key phases: Discovery (understanding your needs and objectives), Planning (creating detailed specifications and timelines), Development (iterative implementation with regular feedback), and Launch (deployment and support). We maintain transparent communication throughout and provide regular updates on progress."
               },
               {
-                question: "How many machines can I install Blitzit on?",
-                answer: "With a standard license, you can install Blitzit on up to 3 devices simultaneously. Enterprise licenses offer unlimited device installations."
+                question: "How do you usually start new collaborations?",
+                answer: "We begin with a detailed consultation to understand your project requirements, goals, and vision. This is followed by a comprehensive proposal outlining scope, timeline, and deliverables. Once aligned, we set up project management tools and communication channels to ensure smooth collaboration."
               },
               {
-                question: "Is Blitzit a free app?",
-                answer: "Blitzit offers both free and premium tiers. The free tier includes essential features, while premium tiers unlock advanced capabilities and increased usage limits."
+                question: "Do you guys work with big companies only? We're an early-stage startup?",
+                answer: "We work with companies of all sizes, from early-stage startups to enterprise organizations. Our flexible engagement models are designed to accommodate different scales and budgets. For startups, we offer specialized packages that focus on essential features and rapid deployment to help you get to market quickly."
               },
               {
-                question: "How can I buy Blitzit?",
-                answer: "You can purchase Blitzit directly through our website. We offer monthly and annual subscription plans, as well as lifetime licenses for individual developers and teams."
+                question: "How long it will take to get an estimate from you?",
+                answer: "We typically provide initial estimates within 2-3 business days after our first detailed discussion. For more complex projects, we might need up to 5 days to provide a comprehensive quote. We ensure our estimates are thorough and accurate to avoid surprises later."
               },
               {
-                question: "How do I activate my account if I bought a lifetime option online?",
-                answer: "After purchasing a lifetime license, you'll receive an activation code via email. Simply log in to your account and enter the code in the 'License Management' section to activate."
-              },
-              {
-                question: "Can I integrate Blitzit with other apps?",
-                answer: "Yes, Blitzit offers extensive integration capabilities through our API and native integrations with popular development tools and services."
+                question: "What's the average project duration?",
+                answer: "Project duration varies based on complexity and scope. Typical MVPs take 2-3 months, while full-scale applications might take 4-6 months. We can also work on shorter engagements for specific features or improvements. We'll provide a detailed timeline during the estimation phase."
               }
             ].map((faq, index) => (
               <motion.div

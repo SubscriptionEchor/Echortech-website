@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { motion } from 'framer-motion';
-import { Upload, ArrowRight, Mail, MessageSquare, Phone } from 'lucide-react';
+import { Upload, ArrowUpRight } from 'lucide-react';
 import Layout from '../components/Layout';
 
 const serviceTypes = [
@@ -46,103 +46,55 @@ const Contact = () => {
 
   return (
     <Layout>
-      {/* Hero Section */}
-      <section className="relative min-h-[40vh] flex items-center justify-center overflow-hidden">
+      <section className="min-h-screen py-24 bg-black flex items-center relative overflow-hidden">
         <div className="absolute inset-0">
-          <div className="absolute inset-0 bg-gradient-to-b from-[#0A1A2F] via-[#0A1A2F]/80 to-[#0A1A2F]" />
-          <div className="absolute inset-0 bg-[radial-gradient(circle_at_center,rgba(0,100,255,0.15)_0%,transparent_100%)]" />
+          <div className="absolute inset-0 bg-[linear-gradient(to_bottom,transparent,rgba(0,0,0,0.8))]" />
+          <div className="absolute inset-0 bg-[radial-gradient(circle_at_center,rgba(99,102,241,0.08)_0%,transparent_100%)]" />
         </div>
-        
-        <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-32">
-          <motion.div
+        <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
+          <motion.div 
+            className="text-center mb-16 relative"
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
-            className="text-center space-y-8"
           >
-            <motion.h1
-              initial={{ opacity: 0, y: 20 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ delay: 0.2 }}
-              className="text-5xl md:text-7xl font-medium tracking-tight text-white max-w-4xl mx-auto leading-[1.1]"
-            >
-              Let's create something
+            <h1 className="text-7xl font-light text-white mb-8 tracking-tight">
+              Hey! Tell us all
               <br />
-              amazing together
-            </motion.h1>
-
-            <motion.p
-              initial={{ opacity: 0, y: 20 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ delay: 0.3 }}
-              className="text-xl text-gray-300 max-w-2xl mx-auto"
-            >
-              Have a project in mind? We'd love to hear about it. Tell us what you're
-              looking for and we'll help you achieve it.
-            </motion.p>
+              the things 👋
+            </h1>
           </motion.div>
-        </div>
-      </section>
 
-      {/* Contact Methods */}
-      <section className="py-12 bg-[#0C0D0C] border-b border-gray-800">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
-            {[
-              {
-                icon: <Mail className="w-6 h-6" />,
-                title: "Email us",
-                description: "contact@company.com",
-                color: "bg-blue-500"
-              },
-              {
-                icon: <MessageSquare className="w-6 h-6" />,
-                title: "Live chat",
-                description: "Chat with our team",
-                color: "bg-purple-500"
-              },
-              {
-                icon: <Phone className="w-6 h-6" />,
-                title: "Call us",
-                description: "+1 (555) 000-0000",
-                color: "bg-green-500"
-              }
-            ].map((item, index) => (
-              <motion.div
-                key={index}
-                initial={{ opacity: 0, y: 20 }}
-                animate={{ opacity: 1, y: 0 }}
-                transition={{ delay: index * 0.1 }}
-                className="relative group"
-              >
-                <div className="p-6 rounded-2xl bg-[#141414] border border-[#1A1D1A] hover:border-[#2A2F2A] transition-colors">
-                  <div className={`w-12 h-12 ${item.color} rounded-lg flex items-center justify-center mb-4`}>
-                    {item.icon}
-                  </div>
-                  <h3 className="text-xl font-medium text-white mb-2">
-                    {item.title}
-                  </h3>
-                  <p className="text-gray-400">
-                    {item.description}
-                  </p>
-                </div>
-              </motion.div>
-            ))}
-          </div>
-        </div>
-      </section>
-
-      {/* Contact Form Section */}
-      <section className="py-24 bg-[#0C0D0C]">
-        <div className="max-w-3xl mx-auto px-4 sm:px-6 lg:px-8">
           <motion.form
             onSubmit={handleSubmit}
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
-            className="space-y-8"
+            className="space-y-12"
           >
+            <div className="relative space-y-12">
+            {/* Service Type Field */}
+            <div>
+              <p className="text-2xl text-white/80 mb-8">I'm interested in...</p>
+              <div className="flex flex-wrap gap-3">
+                {serviceTypes.map((type) => (
+                  <button
+                    key={type}
+                    type="button"
+                    onClick={() => setFormData(prev => ({ ...prev, serviceType: type }))}
+                    className={`px-6 py-3 rounded-full border text-sm transition-all ${
+                      formData.serviceType === type
+                        ? 'border-white text-white bg-white/5'
+                        : 'border-white/10 text-white/60 hover:border-white/30'
+                    }`}
+                  >
+                    {type}
+                  </button>
+                ))}
+              </div>
+            </div>
+
             {/* Name Field */}
             <div>
-              <label htmlFor="name" className="block text-sm font-medium text-gray-300 mb-2">
+              <label htmlFor="name" className="sr-only">
                 Your name
               </label>
               <input
@@ -151,14 +103,14 @@ const Contact = () => {
                 required
                 value={formData.name}
                 onChange={(e) => setFormData(prev => ({ ...prev, name: e.target.value }))}
-                className="w-full px-4 py-3 bg-[#141414] border border-gray-800 rounded-lg text-white placeholder-gray-500 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent transition-colors"
-                placeholder="John Doe"
+                className="w-full px-0 py-8 bg-transparent border-0 border-b border-white/10 text-white placeholder-white/40 focus:outline-none focus:border-white/30 text-2xl transition-all mb-8"
+                placeholder="Your name"
               />
             </div>
 
             {/* Email Field */}
             <div>
-              <label htmlFor="email" className="block text-sm font-medium text-gray-300 mb-2">
+              <label htmlFor="email" className="sr-only">
                 Email
               </label>
               <input
@@ -167,33 +119,14 @@ const Contact = () => {
                 required
                 value={formData.email}
                 onChange={(e) => setFormData(prev => ({ ...prev, email: e.target.value }))}
-                className="w-full px-4 py-3 bg-[#141414] border border-gray-800 rounded-lg text-white placeholder-gray-500 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent transition-colors"
-                placeholder="john@example.com"
+                className="w-full px-0 py-6 bg-transparent border-0 border-b border-white/10 text-white placeholder-white/40 focus:outline-none focus:border-white/30 text-xl transition-all mb-4"
+                placeholder="Email"
               />
-            </div>
-
-            {/* Service Type Field */}
-            <div>
-              <label htmlFor="serviceType" className="block text-sm font-medium text-gray-300 mb-2">
-                I am interested in
-              </label>
-              <select
-                id="serviceType"
-                required
-                value={formData.serviceType}
-                onChange={(e) => setFormData(prev => ({ ...prev, serviceType: e.target.value }))}
-                className="w-full px-4 py-3 bg-[#141414] border border-gray-800 rounded-lg text-white placeholder-gray-500 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent transition-colors"
-              >
-                <option value="">Select a service</option>
-                {serviceTypes.map((type) => (
-                  <option key={type} value={type}>{type}</option>
-                ))}
-              </select>
             </div>
 
             {/* Project Details Field */}
             <div>
-              <label htmlFor="projectDetails" className="block text-sm font-medium text-gray-300 mb-2">
+              <label htmlFor="projectDetails" className="sr-only">
                 Tell us about the project
               </label>
               <textarea
@@ -201,36 +134,35 @@ const Contact = () => {
                 required
                 value={formData.projectDetails}
                 onChange={(e) => setFormData(prev => ({ ...prev, projectDetails: e.target.value }))}
-                rows={6}
-                className="w-full px-4 py-3 bg-[#141414] border border-gray-800 rounded-lg text-white placeholder-gray-500 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent transition-colors resize-none"
-                placeholder="Please share any relevant details about your project..."
+                rows={3}
+                className="w-full px-0 py-6 bg-transparent border-0 border-b border-white/10 text-white placeholder-white/40 focus:outline-none focus:border-white/30 text-xl transition-all resize-none mb-4"
+                placeholder="Tell us about your project"
               />
             </div>
 
             {/* Budget Field */}
             <div>
-              <label htmlFor="budget" className="block text-sm font-medium text-gray-300 mb-2">
-                Project budget in USD
-              </label>
-              <select
-                id="budget"
-                required
-                value={formData.budget}
-                onChange={(e) => setFormData(prev => ({ ...prev, budget: e.target.value }))}
-                className="w-full px-4 py-3 bg-[#141414] border border-gray-800 rounded-lg text-white placeholder-gray-500 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent transition-colors"
-              >
-                <option value="">Select budget range</option>
+              <p className="text-xl text-white/80 mb-6">Project budget (USD)</p>
+              <div className="flex flex-wrap gap-3">
                 {budgetRanges.map((range) => (
-                  <option key={range} value={range}>{range}</option>
+                  <button
+                    key={range}
+                    type="button"
+                    onClick={() => setFormData(prev => ({ ...prev, budget: range }))}
+                    className={`px-6 py-3 rounded-full border text-sm transition-all ${
+                      formData.budget === range
+                        ? 'border-white text-white'
+                        : 'border-white/10 text-white/60 hover:border-white/30'
+                    }`}
+                  >
+                    {range}
+                  </button>
                 ))}
-              </select>
+              </div>
             </div>
 
             {/* File Upload Field */}
             <div>
-              <label htmlFor="file" className="block text-sm font-medium text-gray-300 mb-2">
-                Add attachment
-              </label>
               <div className="relative">
                 <input
                   type="file"
@@ -241,41 +173,12 @@ const Contact = () => {
                 />
                 <label
                   htmlFor="file"
-                  className="flex items-center justify-center w-full px-4 py-3 bg-[#141414] border border-gray-800 rounded-lg text-white hover:bg-gray-800 transition-colors cursor-pointer group"
+                  className="inline-flex items-center gap-2 text-white/60 hover:text-white cursor-pointer transition-colors group"
                 >
-                  <Upload className="w-5 h-5 mr-2 group-hover:scale-110 transition-transform" />
+                  <Upload className="w-4 h-4" />
                   <span className="text-sm">
-                    {formData.file ? formData.file.name : 'Choose a file'}
+                    {formData.file ? formData.file.name : 'Add attachment'}
                   </span>
-                </label>
-                <p className="mt-2 text-xs text-gray-500">
-                  Accepted file types: PDF, DOC, DOCX, TXT, PNG, JPG (max 10MB)
-                </p>
-              </div>
-            </div>
-
-            {/* GDPR Consent */}
-            <div className="space-y-4">
-              <div className="flex items-start">
-                <input
-                  type="checkbox"
-                  id="gdprConsent"
-                  required
-                  checked={formData.gdprConsent}
-                  onChange={(e) => setFormData(prev => ({ ...prev, gdprConsent: e.target.checked }))}
-                  className="mt-1 h-4 w-4 rounded border-gray-800 bg-[#141414] text-blue-500 focus:ring-blue-500"
-                />
-                <label htmlFor="gdprConsent" className="ml-3 text-sm text-gray-400">
-                  I consent to having this website store my submitted information so they can respond
-                  to my inquiry. View our{' '}
-                  <a href="/privacy-policy" className="text-blue-400 hover:text-blue-300 underline">
-                    privacy policy
-                  </a>
-                  {' '}and{' '}
-                  <a href="/terms" className="text-blue-400 hover:text-blue-300 underline">
-                    terms of service
-                  </a>
-                  {' '}to learn more about how we use your data.
                 </label>
               </div>
             </div>
@@ -285,12 +188,45 @@ const Contact = () => {
               type="submit"
               whileHover={{ scale: 1.02 }}
               whileTap={{ scale: 0.98 }}
-              className="w-full flex items-center justify-center px-8 py-4 bg-blue-500 text-white rounded-lg hover:bg-blue-600 transition-colors font-medium"
+              className="inline-flex items-center gap-2 text-white font-medium bg-white/10 hover:bg-white/20 px-6 py-3 rounded-full transition-all border border-white/20 hover:border-white/30"
             >
               Send Request
-              <ArrowRight className="ml-2 w-5 h-5" />
+              <ArrowUpRight className="w-5 h-5 group-hover:rotate-45 transition-transform" />
             </motion.button>
+            </div>
           </motion.form>
+
+          <motion.div
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            transition={{ delay: 0.5 }}
+            className="mt-24 pt-12 border-t border-white/20"
+          >
+            <p className="text-sm text-white/60 uppercase tracking-wider mb-8 font-medium">Social media and contacts</p>
+            <div className="space-y-6">
+              {[
+                { label: 'Instagram', href: 'https://instagram.com/yourusername' },
+                { label: 'LinkedIn', href: 'https://linkedin.com/in/yourusername' },
+                { label: 'Dribbble', href: 'https://dribbble.com/yourusername' },
+                { label: 'GitHub', href: 'https://github.com/yourusername' }
+              ].map((social) => (
+                <div key={social.label} className="relative group">
+                  <a
+                    href={social.href}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="block w-full"
+                  >
+                    <div className="flex items-center justify-between text-white/80 group-hover:text-white transition-colors py-2">
+                      <span className="text-lg font-medium">{social.label}</span>
+                      <ArrowUpRight className="w-5 h-5 transform group-hover:rotate-45 transition-all" />
+                    </div>
+                  </a>
+                  <div className="absolute inset-0 cursor-pointer" onClick={() => window.open(social.href, '_blank', 'noopener,noreferrer')} />
+                </div>
+              ))}
+            </div>
+          </motion.div>
         </div>
       </section>
     </Layout>
