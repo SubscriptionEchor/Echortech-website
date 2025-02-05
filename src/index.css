@@ -83,16 +83,30 @@
 
 @keyframes marquee {
   0% {
-    transform: translate3d(0, 0, 0);
+    transform: translateX(0);
   }
   100% {
-    transform: translate3d(-100%, 0, 0);
+    transform: translateX(-50%);
   }
 }
 
 @layer utilities {
   .animate-marquee {
-    animation: marquee 120s linear infinite;
+    animation: marquee 15s linear infinite;
     will-change: transform;
+  }
+  .animate-marquee2 {
+    animation: marquee 15s linear infinite;
+    animation-delay: -7.5s;
+  }
+  
+  @media (max-width: 768px) {
+    .animate-marquee,
+    .animate-marquee2 {
+      animation-duration: 10s;
+    }
+    .animate-marquee2 {
+      animation-delay: -5s;
+    }
   }
 }

@@ -63,49 +63,7 @@ const navigation: NavItem[] = [
       ]
     }
   },
-  { 
-    title: 'Industries',
-    href: '/industries',
-    dropdown: {
-      type: 'industries',
-      items: [
-        {
-          category: 'CORE INDUSTRIES',
-          items: [
-            { 
-              title: 'Web 3 & Blockchain',
-              description: 'Crypto, DeFi, DEX, CEX, NFT Marketplaces'
-            },
-            { 
-              title: 'SaaS & Enterprise',
-              description: 'CRM, HR Management, AI Tools, ERP Solutions'
-            },
-            { 
-              title: 'AI & Machine Learning',
-              description: 'Analytics, Chatbots, Predictive Models'
-            }
-          ]
-        },
-        {
-          category: 'EMERGING SECTORS',
-          items: [
-            { 
-              title: 'Fintech & Banking',
-              description: 'Digital Banking, Payment Solutions'
-            },
-            { 
-              title: 'Healthcare & Wellness',
-              description: 'Telemedicine, Mental Health, Insurance'
-            },
-            { 
-              title: 'E-commerce & Retail',
-              description: 'Online Stores, Marketplaces, D2C'
-            }
-          ]
-        }
-      ]
-    }
-  },
+
   { title: 'About', href: '/about' },
 ];
 
