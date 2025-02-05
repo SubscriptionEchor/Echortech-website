@@ -31,33 +31,48 @@ const navigation: NavItem[] = [
       type: 'services',
       items: [
         {
-          category: 'STRATEGY',
+          category: 'AI & ML',
           items: [
-            { title: 'Product Discovery', description: 'Research & product architecture' },
-            { title: 'Proof of Concept', description: 'Validate your idea & viability' },
-            { title: 'UX Audit', description: 'Make your product competitive' },
-            { title: 'UI Concept', description: 'Define the unique style & visual' },
-            { title: 'Pitch Deck', description: 'Winning investor presentation' }
+            { 
+              title: 'Custom AI Solutions', 
+              description: 'LLMs, Computer Vision & NLP models',
+              icon: '🧠'
+            },
+            { 
+              title: 'AI Integration', 
+              description: 'Seamless AI implementation for your business',
+              icon: '🤖'
+            }
           ]
         },
         {
-          category: 'DESIGN',
+          category: 'BLOCKCHAIN',
           items: [
-            { title: 'UI/UX Design', description: 'Web & Mobile App Design' },
-            { title: 'Website Design', description: 'Custom Websites, Landing page' },
-            { title: 'Mobile Design', description: 'User-friendly applications' },
-            { title: 'Brand Identity', description: 'Logo, Typography, Color' },
-            { title: 'Graphic Design', description: 'Illustrations, Icons, Social media' }
+            { 
+              title: 'Smart Contracts', 
+              description: 'Secure & audited contract development',
+              icon: '📜'
+            },
+            { 
+              title: 'DeFi Platforms', 
+              description: 'Custom DeFi & Web3 solutions',
+              icon: '⛓️'
+            }
           ]
         },
         {
           category: 'DEVELOPMENT',
           items: [
-            { title: 'Webflow Development', description: 'Site builder solutions' },
-            { title: 'Landing page', description: 'High-converting website' },
-            { title: 'Web Development', description: 'Front-End & Back-End Development' },
-            { title: 'Mobile Development', description: 'IOS, Android, Cross-platform' },
-            { title: 'DevOps', description: 'QA, Manual testing, Engineering' }
+            { 
+              title: 'Web & Mobile', 
+              description: 'Full-stack apps with modern tech',
+              icon: '🌐'
+            },
+            { 
+              title: 'API & Backend', 
+              description: 'Scalable & secure architectures',
+              icon: '⚡'
+            }
           ]
         }
       ]
@@ -136,55 +151,42 @@ export default function Layout({ children }: { children: React.ReactNode }) {
                           animate={{ opacity: 1, y: 0 }}
                           exit={{ opacity: 0, y: 10 }}
                           transition={{ duration: 0.15 }}
-                          className="absolute left-0 top-full mt-1 w-screen max-w-[90rem] max-h-[calc(100vh-5rem)] bg-black/95 backdrop-blur-xl rounded-2xl shadow-2xl border border-white/10 overflow-y-auto"
+                          className="absolute left-0 top-full mt-1 w-[280px] bg-black/95 backdrop-blur-xl rounded-2xl shadow-2xl border border-white/10"
                           style={{ zIndex: 50 }}
                         >
-                          <div className={`grid ${item.dropdown.type === 'industries' ? 'grid-cols-1 md:grid-cols-2' : 'grid-cols-1 md:grid-cols-2 lg:grid-cols-3'} gap-4 md:gap-8 lg:gap-12 p-4 md:p-6 lg:p-8 overflow-y-auto`}>
+                          <div className="p-2">
                             {item.dropdown.items.map((section, idx) => (
-                              <div key={idx} className="space-y-6">
+                              <div key={idx} className="space-y-1">
                                 {section.category && (
-                                  <h3 className="text-sm font-medium text-[#4ADE80] tracking-wider uppercase">
+                                  <h3 className="text-xs font-medium text-[#4ADE80] tracking-wider uppercase px-3 py-2">
                                     {section.category}
                                   </h3>
                                 )}
-                                <div className="space-y-4">
+                                <div>
                                   {section.items.map((dropdownItem, itemIdx) => (
                                     <a
                                       key={itemIdx}
                                       href="#"
-                                      className="group flex items-start gap-2 md:gap-4 rounded-xl p-3 md:p-4 transition-all duration-200 hover:bg-white/5 relative border border-transparent hover:border-white/10"
+                                      className="group flex items-center gap-3 rounded-lg px-3 py-2 transition-all duration-200 hover:bg-white/5"
                                     >
+                                      {dropdownItem.icon && (
+                                        <div className="flex-shrink-0 w-8 h-8 rounded-lg bg-white/5 flex items-center justify-center text-base">
+                                          {dropdownItem.icon}
+                                        </div>
+                                      )}
                                       <div className="flex-1">
-                                        <p className="text-base md:text-lg font-medium text-white group-hover:text-[#4ADE80] transition-colors">
+                                        <p className="text-sm font-medium text-white group-hover:text-[#4ADE80] transition-colors">
                                            {dropdownItem.title}
                                         </p>
-                                        <p className="mt-1 md:mt-2 text-xs md:text-sm text-white/50 group-hover:text-white/70 transition-colors line-clamp-2">
+                                        <p className="text-xs text-white/50 group-hover:text-white/70 transition-colors">
                                            {dropdownItem.description}
                                         </p>
-                                      </div>
-                                      <div className="flex-shrink-0 opacity-0 group-hover:opacity-100 transition-opacity absolute right-3 top-1/2 -translate-y-1/2">
-                                        <ArrowRight className="w-5 h-5 text-[#4ADE80]" />
                                       </div>
                                     </a>
                                   ))}
                                 </div>
                               </div>
                             ))}
-                          </div>
-                          <div className="mt-2 md:mt-4 p-4 md:p-6 bg-white/5 border-t border-white/10">
-                            <div className="flex items-center justify-between">
-                              <div>
-                                <p className="text-xs md:text-sm font-medium text-white">Need help choosing?</p>
-                                <p className="text-xs md:text-sm text-white/60">We'll help you find the right solution</p>
-                              </div>
-                              <a
-                                href="/contact"
-                                className="inline-flex items-center px-3 md:px-4 py-1.5 md:py-2 rounded-full bg-white text-black hover:bg-gray-100 transition-colors text-xs md:text-sm font-medium"
-                              >
-                                Contact Us
-                                <ArrowRight className="ml-2 w-4 h-4" />
-                              </a>
-                            </div>
                           </div>
                         </motion.div>
                       )}
