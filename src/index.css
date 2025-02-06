@@ -28,6 +28,22 @@
   }
 }
 
+/* GSAP Smooth Scroll Styles */
+#smooth-wrapper {
+  overflow: hidden;
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+}
+
+#smooth-content {
+  overflow: visible;
+  width: 100%;
+  min-height: 100vh;
+}
+
 @layer base {
   html {
     font-feature-settings: "ss01", "ss02", "cv01", "cv02";

@@ -1,6 +1,6 @@
 import React from 'react';
 import { motion } from 'framer-motion';
-import { Mail, Bot, Cpu, ScrollText, Blocks, Globe, Zap, ArrowUpRight } from 'lucide-react';
+import { Mail, Bot, Cpu, ScrollText, Blocks, Globe, Zap, ArrowUpRight, Search, BarChart3, ArrowRight } from 'lucide-react';
 import Layout from '../components/Layout';
 
 const serviceCategories = [
@@ -11,7 +11,7 @@ const serviceCategories = [
         icon: <Bot className="w-8 h-8" />,
         title: "Custom AI Solutions",
         description: "LLMs, Computer Vision & NLP models. We develop cutting-edge AI solutions tailored to your specific business needs.",
-        link: "/services/ai/custom-solutions"
+        link: "#custom-solutions"
       },
       {
         icon: <Cpu className="w-8 h-8" />,
@@ -67,12 +67,12 @@ const Services = () => {
             <div className="absolute inset-0" />
           </div>
           
-          <div className="container mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="max-w-[1600px] mx-auto px-4 sm:px-6 lg:px-8">
             <motion.div 
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.8, ease: [0.16, 1, 0.3, 1] }}
-              className="max-w-[1400px] mx-auto"
+              className="w-full"
             >
               <motion.h1
                 initial={{ opacity: 0, y: 20 }}
@@ -103,7 +103,7 @@ const Services = () => {
             <div className="absolute inset-0 bg-[radial-gradient(circle_at_center,rgba(0,100,255,0.02)_0%,transparent_100%)]" />
           </div>
 
-          <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="relative z-10 max-w-[1600px] mx-auto px-4 sm:px-6 lg:px-8">
             <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 xl:gap-24 items-start">
               {/* Left Column */}
               <motion.div
@@ -175,6 +175,528 @@ const Services = () => {
           </div>
         </section>
 
+        {/* AI Single-shot Retrieval Section */}
+        <section id="custom-solutions" className="relative py-40 overflow-hidden scroll-mt-20">
+          <div className="absolute inset-0">
+            <div className="absolute inset-0 bg-black" />
+            <div className="absolute inset-0 bg-[radial-gradient(circle_at_center,rgba(0,100,255,0.02)_0%,transparent_100%)]" />
+          </div>
+
+          <div className="relative z-10 max-w-[1600px] mx-auto px-4 sm:px-6 lg:px-8">
+            <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 xl:gap-24">
+              {/* Left Column */}
+              <div className="space-y-8">
+                <motion.span
+                  initial={{ opacity: 0 }}
+                  whileInView={{ opacity: 1 }}
+                  viewport={{ once: true }}
+                  className="text-sm text-[#4ADE80] tracking-wider uppercase font-medium"
+                >
+                  CUSTOM AI SOLUTIONS
+                </motion.span>
+
+                <motion.h2
+                  initial={{ opacity: 0, y: 20 }}
+                  whileInView={{ opacity: 1, y: 0 }}
+                  viewport={{ once: true }}
+                  className="text-4xl sm:text-5xl md:text-6xl xl:text-7xl font-light text-white leading-[1.1] tracking-[-0.02em]"
+                >
+                  Transform your business with custom AI solutions
+                </motion.h2>
+
+                <motion.p
+                  initial={{ opacity: 0, y: 20 }}
+                  whileInView={{ opacity: 1, y: 0 }}
+                  viewport={{ once: true }}
+                  transition={{ delay: 0.1 }}
+                  className="text-lg text-white/60 max-w-2xl leading-relaxed"
+                >
+                  From intelligent automation to predictive analytics, we develop tailored AI solutions that drive innovation and efficiency. Our expertise spans machine learning, deep learning, and natural language processing.
+                </motion.p>
+
+                <motion.div
+                  initial={{ opacity: 0, y: 20 }}
+                  whileInView={{ opacity: 1, y: 0 }}
+                  viewport={{ once: true }}
+                  transition={{ delay: 0.2 }}
+                  className="grid grid-cols-1 sm:grid-cols-2 gap-8 pt-8"
+                >
+                  <div className="space-y-6">
+                    <div className="w-12 h-12 rounded-lg bg-[#141414] border border-[#1A1D1A] flex items-center justify-center">
+                      <Bot className="w-6 h-6 text-[#4ADE80]" />
+                    </div>
+                    <h3 className="text-lg text-white font-light">Custom LLMs and AI models tailored to your specific business requirements and use cases</h3>
+                  </div>
+
+                  <div className="space-y-6">
+                    <div className="w-12 h-12 rounded-lg bg-[#141414] border border-[#1A1D1A] flex items-center justify-center">
+                      <Cpu className="w-6 h-6 text-[#4ADE80]" />
+                    </div>
+                    <h3 className="text-lg text-white font-light">End-to-end AI implementation from data preparation to model deployment and monitoring</h3>
+                  </div>
+                </motion.div>
+
+                <motion.div
+                  initial={{ opacity: 0, y: 20 }}
+                  whileInView={{ opacity: 1, y: 0 }}
+                  viewport={{ once: true }}
+                  transition={{ delay: 0.3 }}
+                  className="pt-8"
+                >
+                  <a
+                    href="#"
+                    className="inline-flex items-center gap-2 text-white hover:text-[#4ADE80] transition-colors group"
+                  >
+                    <span className="text-lg font-light">Explore AI Solutions</span>
+                    <ArrowRight className="w-5 h-5 transform group-hover:translate-x-1 transition-transform" />
+                  </a>
+                </motion.div>
+              </div>
+
+              {/* Right Column - Code Preview */}
+              <motion.div
+                initial={{ opacity: 0, y: 20 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true }}
+                className="relative lg:sticky lg:top-24 xl:top-32"
+              >
+                <div className="relative rounded-2xl overflow-hidden">
+                  <img
+                    src="https://images.contentstack.io/v3/assets/bltac01ee6daa3a1e14/blt6844981b9ff7dcdd/672b58fd6292935698743f90/vector-database.png?width=1536&disable=upscale&auto=webp"
+                    alt="Vector Database Visualization"
+                    className="w-full h-auto rounded-2xl"
+                  />
+                </div>
+              </motion.div>
+            </div>
+          </div>
+        </section>
+
+        {/* AI Integration Section */}
+        <section id="ai-integration" className="relative py-40 overflow-hidden scroll-mt-20">
+          <div className="absolute inset-0">
+            <div className="absolute inset-0 bg-[#0C0D0C]" />
+            <div className="absolute inset-0 bg-[radial-gradient(circle_at_center,rgba(0,100,255,0.02)_0%,transparent_100%)]" />
+          </div>
+
+          <div className="relative z-10 max-w-[1600px] mx-auto px-4 sm:px-6 lg:px-8">
+            <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 xl:gap-24">
+              {/* Image Column - Now First */}
+              <motion.div
+                initial={{ opacity: 0, y: 20 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true }}
+                className="relative lg:sticky lg:top-24 xl:top-32"
+              >
+                <img
+                  src="https://images.contentstack.io/v3/assets/bltac01ee6daa3a1e14/blt6844981b9ff7dcdd/672b58fd6292935698743f90/vector-database.png?width=1536&disable=upscale&auto=webp"
+                  alt="Data Architecture Visualization"
+                  className="w-full h-auto rounded-2xl"
+                />
+              </motion.div>
+
+              {/* Left Column */}
+              <div className="space-y-8 lg:pt-12">
+                <motion.span
+                  initial={{ opacity: 0 }}
+                  whileInView={{ opacity: 1 }}
+                  viewport={{ once: true }}
+                  className="inline-block text-sm text-[#4ADE80] tracking-wider uppercase font-medium"
+                >
+                  AI INTEGRATION
+                </motion.span>
+
+                <motion.h2
+                  initial={{ opacity: 0, y: 20 }}
+                  whileInView={{ opacity: 1, y: 0 }}
+                  viewport={{ once: true }}
+                  className="text-4xl sm:text-5xl md:text-6xl xl:text-7xl font-light text-white leading-[1] tracking-[-0.02em]"
+                >
+                  Seamless AI Integration for Your Business
+                </motion.h2>
+
+                <motion.p
+                  initial={{ opacity: 0, y: 20 }}
+                  whileInView={{ opacity: 1, y: 0 }}
+                  viewport={{ once: true }}
+                  transition={{ delay: 0.2 }}
+                  className="text-lg text-white/60 max-w-2xl leading-relaxed font-light"
+                >
+                  Transform your existing systems with powerful AI capabilities. We help businesses integrate and leverage artificial intelligence to enhance operations, improve decision-making, and drive innovation.
+                </motion.p>
+
+                <motion.p
+                  initial={{ opacity: 0, y: 20 }}
+                  whileInView={{ opacity: 1, y: 0 }}
+                  viewport={{ once: true }}
+                  transition={{ delay: 0.3 }}
+                  className="text-lg text-white/60 max-w-2xl leading-relaxed font-light"
+                >
+                  Our expert team ensures smooth integration of AI models into your workflow, with minimal disruption to your existing processes while maximizing the impact on your business outcomes.
+                </motion.p>
+
+                <motion.div
+                  initial={{ opacity: 0, y: 20 }}
+                  whileInView={{ opacity: 1, y: 0 }}
+                  viewport={{ once: true }}
+                  transition={{ delay: 0.4 }}
+                  className="grid grid-cols-1 sm:grid-cols-2 gap-8 pt-8"
+                >
+                  <div className="space-y-6">
+                    <div className="w-12 h-12 rounded-lg bg-[#141414] border border-[#1A1D1A] flex items-center justify-center">
+                      <BarChart3 className="w-6 h-6 text-[#4ADE80]" />
+                    </div>
+                    <h3 className="text-base text-white/80 font-light leading-relaxed">Seamless integration with existing systems and workflows for maximum efficiency</h3>
+                  </div>
+
+                  <div className="space-y-6">
+                    <div className="w-12 h-12 rounded-lg bg-[#141414] border border-[#1A1D1A] flex items-center justify-center">
+                      <Search className="w-6 h-6 text-[#4ADE80]" />
+                    </div>
+                    <h3 className="text-base text-white/80 font-light leading-relaxed">Real-time monitoring and optimization of AI model performance</h3>
+                  </div>
+                </motion.div>
+
+                <motion.div
+                  initial={{ opacity: 0, y: 20 }}
+                  whileInView={{ opacity: 1, y: 0 }}
+                  viewport={{ once: true }}
+                  transition={{ delay: 0.5 }}
+                  className="pt-8"
+                >
+                  <a
+                    href="#"
+                    className="inline-flex items-center gap-2 px-6 py-3 text-white bg-white/5 hover:bg-white/10 rounded-full border border-white/10 hover:border-white/20 transition-all duration-300 group"
+                  >
+                    <span className="text-lg font-light">Explore AI Integration</span>
+                    <ArrowRight className="w-5 h-5 transform group-hover:translate-x-1 transition-transform" />
+                  </a>
+                </motion.div>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        {/* Smart Contracts Section */}
+        <section id="smart-contracts" className="relative py-40 overflow-hidden scroll-mt-20">
+          <div className="absolute inset-0">
+            <div className="absolute inset-0 bg-black" />
+            <div className="absolute inset-0 bg-[radial-gradient(circle_at_center,rgba(0,100,255,0.02)_0%,transparent_100%)]" />
+          </div>
+
+          <div className="relative z-10 max-w-[1600px] mx-auto px-4 sm:px-6 lg:px-8">
+            <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 xl:gap-24">
+              {/* Left Column */}
+              <div className="space-y-8">
+                <motion.span
+                  initial={{ opacity: 0 }}
+                  whileInView={{ opacity: 1 }}
+                  viewport={{ once: true }}
+                  className="text-sm text-[#4ADE80] tracking-wider uppercase font-medium"
+                >
+                  SMART CONTRACTS
+                </motion.span>
+
+                <motion.h2
+                  initial={{ opacity: 0, y: 20 }}
+                  whileInView={{ opacity: 1, y: 0 }}
+                  viewport={{ once: true }}
+                  className="text-4xl sm:text-5xl md:text-6xl xl:text-7xl font-light text-white leading-[1.1] tracking-[-0.02em]"
+                >
+                  Secure & Audited Smart Contract Development
+                </motion.h2>
+
+                <motion.p
+                  initial={{ opacity: 0, y: 20 }}
+                  whileInView={{ opacity: 1, y: 0 }}
+                  viewport={{ once: true }}
+                  transition={{ delay: 0.1 }}
+                  className="text-lg text-white/60 max-w-2xl leading-relaxed"
+                >
+                  We develop secure, efficient, and audited smart contracts for various blockchain platforms. Our expertise spans Ethereum, Solana, and other major networks, ensuring your decentralized applications are built on a solid foundation.
+                </motion.p>
+
+                <motion.div
+                  initial={{ opacity: 0, y: 20 }}
+                  whileInView={{ opacity: 1, y: 0 }}
+                  viewport={{ once: true }}
+                  transition={{ delay: 0.2 }}
+                  className="grid grid-cols-1 sm:grid-cols-2 gap-8 pt-8"
+                >
+                  <div className="space-y-6">
+                    <div className="w-12 h-12 rounded-lg bg-[#141414] border border-[#1A1D1A] flex items-center justify-center">
+                      <ScrollText className="w-6 h-6 text-[#4ADE80]" />
+                    </div>
+                    <h3 className="text-lg text-white font-light">Comprehensive security audits and testing to ensure contract reliability</h3>
+                  </div>
+
+                  <div className="space-y-6">
+                    <div className="w-12 h-12 rounded-lg bg-[#141414] border border-[#1A1D1A] flex items-center justify-center">
+                      <Blocks className="w-6 h-6 text-[#4ADE80]" />
+                    </div>
+                    <h3 className="text-lg text-white font-light">Gas optimization and efficient contract design for cost-effective operations</h3>
+                  </div>
+                </motion.div>
+              </div>
+
+              {/* Right Column */}
+              <motion.div
+                initial={{ opacity: 0, y: 20 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true }}
+                className="relative lg:sticky lg:top-24 xl:top-32"
+              >
+                <div className="relative rounded-2xl overflow-hidden">
+                  <img
+                    src="https://images.unsplash.com/photo-1639762681485-074b7f938ba0?auto=format&fit=crop&q=80&w=2232&ixlib=rb-4.0.3"
+                    alt="Smart Contract Development"
+                    className="w-full h-auto rounded-2xl"
+                  />
+                </div>
+              </motion.div>
+            </div>
+          </div>
+        </section>
+
+        {/* DeFi Platforms Section */}
+        <section id="defi-platforms" className="relative py-40 overflow-hidden scroll-mt-20">
+          <div className="absolute inset-0">
+            <div className="absolute inset-0 bg-[#0C0D0C]" />
+            <div className="absolute inset-0 bg-[radial-gradient(circle_at_center,rgba(0,100,255,0.02)_0%,transparent_100%)]" />
+          </div>
+
+          <div className="relative z-10 max-w-[1600px] mx-auto px-4 sm:px-6 lg:px-8">
+            <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 xl:gap-24">
+              {/* Image Column - First */}
+              <motion.div
+                initial={{ opacity: 0, y: 20 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true }}
+                className="relative lg:sticky lg:top-24 xl:top-32"
+              >
+                <img
+                  src="https://images.unsplash.com/photo-1621761191319-c6fb62004040?auto=format&fit=crop&q=80&w=2232&ixlib=rb-4.0.3"
+                  alt="DeFi Platform Development"
+                  className="w-full h-auto rounded-2xl"
+                />
+              </motion.div>
+
+              {/* Content Column */}
+              <div className="space-y-8 lg:pt-12">
+                <motion.span
+                  initial={{ opacity: 0 }}
+                  whileInView={{ opacity: 1 }}
+                  viewport={{ once: true }}
+                  className="text-sm text-[#4ADE80] tracking-wider uppercase font-medium"
+                >
+                  DEFI PLATFORMS
+                </motion.span>
+
+                <motion.h2
+                  initial={{ opacity: 0, y: 20 }}
+                  whileInView={{ opacity: 1, y: 0 }}
+                  viewport={{ once: true }}
+                  className="text-4xl sm:text-5xl md:text-6xl xl:text-7xl font-light text-white leading-[1.1] tracking-[-0.02em]"
+                >
+                  Revolutionary DeFi Solutions
+                </motion.h2>
+
+                <motion.p
+                  initial={{ opacity: 0, y: 20 }}
+                  whileInView={{ opacity: 1, y: 0 }}
+                  viewport={{ once: true }}
+                  transition={{ delay: 0.1 }}
+                  className="text-lg text-white/60 max-w-2xl leading-relaxed"
+                >
+                  Build the future of finance with our comprehensive DeFi development services. From decentralized exchanges to lending platforms, we create secure and efficient DeFi solutions that drive innovation in the financial sector.
+                </motion.p>
+
+                <motion.div
+                  initial={{ opacity: 0, y: 20 }}
+                  whileInView={{ opacity: 1, y: 0 }}
+                  viewport={{ once: true }}
+                  transition={{ delay: 0.2 }}
+                  className="grid grid-cols-1 sm:grid-cols-2 gap-8 pt-8"
+                >
+                  <div className="space-y-6">
+                    <div className="w-12 h-12 rounded-lg bg-[#141414] border border-[#1A1D1A] flex items-center justify-center">
+                      <Blocks className="w-6 h-6 text-[#4ADE80]" />
+                    </div>
+                    <h3 className="text-lg text-white font-light">Custom DeFi protocol development with advanced security features</h3>
+                  </div>
+
+                  <div className="space-y-6">
+                    <div className="w-12 h-12 rounded-lg bg-[#141414] border border-[#1A1D1A] flex items-center justify-center">
+                      <ArrowUpRight className="w-6 h-6 text-[#4ADE80]" />
+                    </div>
+                    <h3 className="text-lg text-white font-light">Scalable architecture for high-volume trading and lending operations</h3>
+                  </div>
+                </motion.div>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        {/* Web & Mobile Section */}
+        <section id="web-mobile" className="relative py-40 overflow-hidden scroll-mt-20">
+          <div className="absolute inset-0">
+            <div className="absolute inset-0 bg-black" />
+            <div className="absolute inset-0 bg-[radial-gradient(circle_at_center,rgba(0,100,255,0.02)_0%,transparent_100%)]" />
+          </div>
+
+          <div className="relative z-10 max-w-[1600px] mx-auto px-4 sm:px-6 lg:px-8">
+            <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 xl:gap-24">
+              {/* Left Column */}
+              <div className="space-y-8">
+                <motion.span
+                  initial={{ opacity: 0 }}
+                  whileInView={{ opacity: 1 }}
+                  viewport={{ once: true }}
+                  className="text-sm text-[#4ADE80] tracking-wider uppercase font-medium"
+                >
+                  WEB & MOBILE
+                </motion.span>
+
+                <motion.h2
+                  initial={{ opacity: 0, y: 20 }}
+                  whileInView={{ opacity: 1, y: 0 }}
+                  viewport={{ once: true }}
+                  className="text-4xl sm:text-5xl md:text-6xl xl:text-7xl font-light text-white leading-[1.1] tracking-[-0.02em]"
+                >
+                  Full-Stack Development Excellence
+                </motion.h2>
+
+                <motion.p
+                  initial={{ opacity: 0, y: 20 }}
+                  whileInView={{ opacity: 1, y: 0 }}
+                  viewport={{ once: true }}
+                  transition={{ delay: 0.1 }}
+                  className="text-lg text-white/60 max-w-2xl leading-relaxed"
+                >
+                  Create exceptional digital experiences with our full-stack web and mobile development services. We build responsive, scalable, and user-friendly applications that engage users and drive business growth.
+                </motion.p>
+
+                <motion.div
+                  initial={{ opacity: 0, y: 20 }}
+                  whileInView={{ opacity: 1, y: 0 }}
+                  viewport={{ once: true }}
+                  transition={{ delay: 0.2 }}
+                  className="grid grid-cols-1 sm:grid-cols-2 gap-8 pt-8"
+                >
+                  <div className="space-y-6">
+                    <div className="w-12 h-12 rounded-lg bg-[#141414] border border-[#1A1D1A] flex items-center justify-center">
+                      <Globe className="w-6 h-6 text-[#4ADE80]" />
+                    </div>
+                    <h3 className="text-lg text-white font-light">Modern web applications with cutting-edge technologies and frameworks</h3>
+                  </div>
+
+                  <div className="space-y-6">
+                    <div className="w-12 h-12 rounded-lg bg-[#141414] border border-[#1A1D1A] flex items-center justify-center">
+                      <Zap className="w-6 h-6 text-[#4ADE80]" />
+                    </div>
+                    <h3 className="text-lg text-white font-light">Native and cross-platform mobile apps for iOS and Android</h3>
+                  </div>
+                </motion.div>
+              </div>
+
+              {/* Right Column */}
+              <motion.div
+                initial={{ opacity: 0, y: 20 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true }}
+                className="relative lg:sticky lg:top-24 xl:top-32"
+              >
+                <div className="relative rounded-2xl overflow-hidden">
+                  <img
+                    src="https://images.unsplash.com/photo-1555066931-4365d14bab8c?auto=format&fit=crop&q=80&w=2232&ixlib=rb-4.0.3"
+                    alt="Web Development"
+                    className="w-full h-auto rounded-2xl"
+                  />
+                </div>
+              </motion.div>
+            </div>
+          </div>
+        </section>
+
+        {/* API & Backend Section */}
+        <section id="api-backend" className="relative py-40 overflow-hidden scroll-mt-20">
+          <div className="absolute inset-0">
+            <div className="absolute inset-0 bg-[#0C0D0C]" />
+            <div className="absolute inset-0 bg-[radial-gradient(circle_at_center,rgba(0,100,255,0.02)_0%,transparent_100%)]" />
+          </div>
+
+          <div className="relative z-10 max-w-[1600px] mx-auto px-4 sm:px-6 lg:px-8">
+            <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 xl:gap-24">
+              {/* Image Column - First */}
+              <motion.div
+                initial={{ opacity: 0, y: 20 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true }}
+                className="relative lg:sticky lg:top-24 xl:top-32"
+              >
+                <img
+                  src="https://images.unsplash.com/photo-1558494949-ef010cbdcc31?auto=format&fit=crop&q=80&w=2232&ixlib=rb-4.0.3"
+                  alt="Backend Development"
+                  className="w-full h-auto rounded-2xl"
+                />
+              </motion.div>
+
+              {/* Content Column */}
+              <div className="space-y-8 lg:pt-12">
+                <motion.span
+                  initial={{ opacity: 0 }}
+                  whileInView={{ opacity: 1 }}
+                  viewport={{ once: true }}
+                  className="text-sm text-[#4ADE80] tracking-wider uppercase font-medium"
+                >
+                  API & BACKEND
+                </motion.span>
+
+                <motion.h2
+                  initial={{ opacity: 0, y: 20 }}
+                  whileInView={{ opacity: 1, y: 0 }}
+                  viewport={{ once: true }}
+                  className="text-4xl sm:text-5xl md:text-6xl xl:text-7xl font-light text-white leading-[1.1] tracking-[-0.02em]"
+                >
+                  Robust Backend Infrastructure
+                </motion.h2>
+
+                <motion.p
+                  initial={{ opacity: 0, y: 20 }}
+                  whileInView={{ opacity: 1, y: 0 }}
+                  viewport={{ once: true }}
+                  transition={{ delay: 0.1 }}
+                  className="text-lg text-white/60 max-w-2xl leading-relaxed"
+                >
+                  Power your applications with scalable and secure backend solutions. We design and implement robust APIs and server architectures that ensure high performance, reliability, and seamless integration.
+                </motion.p>
+
+                <motion.div
+                  initial={{ opacity: 0, y: 20 }}
+                  whileInView={{ opacity: 1, y: 0 }}
+                  viewport={{ once: true }}
+                  transition={{ delay: 0.2 }}
+                  className="grid grid-cols-1 sm:grid-cols-2 gap-8 pt-8"
+                >
+                  <div className="space-y-6">
+                    <div className="w-12 h-12 rounded-lg bg-[#141414] border border-[#1A1D1A] flex items-center justify-center">
+                      <Zap className="w-6 h-6 text-[#4ADE80]" />
+                    </div>
+                    <h3 className="text-lg text-white font-light">RESTful and GraphQL APIs with comprehensive documentation</h3>
+                  </div>
+
+                  <div className="space-y-6">
+                    <div className="w-12 h-12 rounded-lg bg-[#141414] border border-[#1A1D1A] flex items-center justify-center">
+                      <Globe className="w-6 h-6 text-[#4ADE80]" />
+                    </div>
+                    <h3 className="text-lg text-white font-light">Microservices architecture for scalable and maintainable systems</h3>
+                  </div>
+                </motion.div>
+              </div>
+            </div>
+          </div>
+        </section>
+
         {/* Testimonial Section */}
         <section className="relative py-40 overflow-hidden">
           <div className="absolute inset-0">
@@ -183,12 +705,12 @@ const Services = () => {
           </div>
 
           <motion.div
-            className="relative z-10 max-w-4xl mx-auto px-4 sm:px-6 lg:px-8"
+            className="relative z-10 max-w-[1600px] mx-auto px-4 sm:px-6 lg:px-8"
             initial={{ opacity: 0 }}
             whileInView={{ opacity: 1 }}
             viewport={{ once: true }}
           >
-            <div className="flex flex-col items-center text-center gap-12">
+            <div className="flex flex-col items-center text-center gap-12 max-w-4xl mx-auto">
               {/* Logo */}
               <motion.div
                 initial={{ opacity: 0, y: 20 }}
@@ -242,69 +764,9 @@ const Services = () => {
           </motion.div>
         </section>
 
-        {/* Services Categories */}
-        <section className="py-40">
-          <div className="container mx-auto px-4 max-w-[1600px]">
-            {serviceCategories.map((category, categoryIndex) => (
-              <div key={category.title} className="mb-24 last:mb-0">
-                <motion.h2
-                  initial={{ opacity: 0, y: 20 }}
-                  whileInView={{ opacity: 1, y: 0 }}
-                  viewport={{ once: true }}
-                  transition={{ delay: categoryIndex * 0.1 }}
-                  className="text-[#4ADE80] text-sm font-medium tracking-wider uppercase mb-12"
-                >
-                  {category.title}
-                </motion.h2>
-
-                <div className="grid grid-cols-1 md:grid-cols-2 gap-8 xl:gap-12">
-                  {category.services.map((service, serviceIndex) => (
-                    <motion.div
-                      key={service.title}
-                      initial={{ opacity: 0, y: 40 }}
-                      whileInView={{ opacity: 1, y: 0 }}
-                      viewport={{ once: true }}
-                      transition={{ delay: (categoryIndex * 0.2) + (serviceIndex * 0.1) }}
-                      className="group relative"
-                    >
-                      <div className="relative rounded-2xl bg-gradient-to-b from-white/5 to-transparent p-[1px] backdrop-blur-3xl">
-                        <a 
-                          href={service.link}
-                          className="block relative rounded-2xl bg-black/50 backdrop-blur-xl p-8 h-full transition-all duration-300"
-                        >
-                          <div className="flex flex-col h-full">
-                            <div className="mb-8 text-[#4ADE80]">
-                              {service.icon}
-                            </div>
-                            
-                            <h3 className="text-2xl xl:text-3xl font-light text-white mb-4">
-                              {service.title}
-                            </h3>
-                            
-                            <p className="text-gray-400/80 text-base xl:text-lg mb-8 leading-relaxed font-light">
-                              {service.description}
-                            </p>
-                            
-                            <div className="mt-auto">
-                              <button className="group/btn w-fit px-6 py-3 xl:px-8 xl:py-4 rounded-full border border-white/10 text-white hover:bg-white/5 transition-all duration-300 text-sm xl:text-base font-medium inline-flex items-center gap-2">
-                                Learn more
-                                <ArrowUpRight className="w-4 h-4 transition-transform group-hover/btn:rotate-45" />
-                              </button>
-                            </div>
-                          </div>
-                        </a>
-                      </div>
-                    </motion.div>
-                  ))}
-                </div>
-              </div>
-            ))}
-          </div>
-        </section>
-
         {/* Let's chat section */}
         <div className="relative py-40 overflow-hidden flex flex-col items-center justify-center">
-          <div className="absolute inset-0 w-full whitespace-nowrap text-[8vw] font-light text-white pointer-events-none select-none flex items-center">
+          <div className="absolute inset-0 w-full max-w-[1600px] mx-auto whitespace-nowrap text-[8vw] font-light text-white pointer-events-none select-none flex items-center">
             <div className="flex animate-marquee">
               Let's chat — hi@echortech.com — Let's chat — hi@echortech.com —
             </div>

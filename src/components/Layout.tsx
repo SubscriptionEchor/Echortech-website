@@ -23,12 +23,14 @@ const navigation: NavItem[] = [
             { 
               title: 'Custom AI Solutions', 
               description: 'LLMs, Computer Vision & NLP models',
-              icon: '🧠'
+              icon: '🧠',
+              link: '/services#custom-solutions'
             },
             { 
               title: 'AI Integration', 
               description: 'Seamless AI implementation for your business',
-              icon: '🤖'
+              icon: '🤖',
+              link: '/services#ai-integration'
             }
           ]
         },
@@ -38,12 +40,14 @@ const navigation: NavItem[] = [
             { 
               title: 'Smart Contracts', 
               description: 'Secure & audited contract development',
-              icon: '📜'
+              icon: '📜',
+              link: '/services#smart-contracts'
             },
             { 
               title: 'DeFi Platforms', 
               description: 'Custom DeFi & Web3 solutions',
-              icon: '⛓️'
+              icon: '⛓️',
+              link: '/services#defi-platforms'
             }
           ]
         },
@@ -53,12 +57,14 @@ const navigation: NavItem[] = [
             { 
               title: 'Web & Mobile', 
               description: 'Full-stack apps with modern tech',
-              icon: '🌐'
+              icon: '🌐',
+              link: '/services#web-mobile'
             },
             { 
               title: 'API & Backend', 
               description: 'Scalable & secure architectures',
-              icon: '⚡'
+              icon: '⚡',
+              link: '/services#api-backend'
             }
           ]
         }
@@ -156,8 +162,23 @@ export default function Layout({ children }: { children: React.ReactNode }) {
                                   {section.items.map((dropdownItem, itemIdx) => (
                                     <a
                                       key={itemIdx}
-                                      href="#"
+                                      href={dropdownItem.link || '#'}
                                       className="group flex items-center gap-3 rounded-lg px-3 py-2 transition-all duration-200 hover:bg-white/5"
+                                      onClick={(e) => {
+                                        e.preventDefault();
+                                        if (dropdownItem.link) {
+                                          const [path, hash] = dropdownItem.link.split('#');
+                                          if (location.pathname !== path) {
+                                            window.location.href = dropdownItem.link;
+                                          } else if (hash) {
+                                            const element = document.getElementById(hash);
+                                            if (element) {
+                                              element.scrollIntoView({ behavior: 'smooth' });
+                                              setActiveDropdown(null);
+                                            }
+                                          }
+                                        }
+                                      }}
                                     >
                                       {dropdownItem.icon && (
                                         <div className="flex-shrink-0 w-8 h-8 rounded-lg bg-white/5 flex items-center justify-center text-base">

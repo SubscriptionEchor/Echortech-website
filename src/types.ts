@@ -1,6 +1,18 @@
 export interface NavItem {
   title: string;
   href: string;
+  dropdown?: {
+    type: string;
+    items: {
+      category: string;
+      items: {
+        title: string;
+        description: string;
+        icon?: string;
+        link?: string;
+      }[];
+    }[];
+  };
 }
 
 export interface Service {
