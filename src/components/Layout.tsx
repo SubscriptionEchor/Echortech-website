@@ -325,13 +325,6 @@ export default function Layout({ children }: { children: React.ReactNode }) {
                   )}
                 </div>
               ))}
-              <Link
-                to="/contact"
-                className="block px-4 py-3 text-base font-medium text-gray-300 hover:text-white rounded-lg hover:bg-white/5 transition-all duration-200"
-                onClick={() => setIsMenuOpen(false)}
-              >
-                Contact Us
-              </Link>
             </div>
           </motion.div>
         )}
