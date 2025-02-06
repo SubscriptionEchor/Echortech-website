@@ -1,44 +1,59 @@
 import React from 'react';
 import { motion } from 'framer-motion';
-import { Mail, Code, Palette, Bot, Database, Lock, Braces } from 'lucide-react';
+import { Mail, Bot, Cpu, ScrollText, Blocks, Globe, Zap, ArrowUpRight } from 'lucide-react';
 import Layout from '../components/Layout';
 
-const services = [
+const serviceCategories = [
   {
-    icon: <Bot className="w-8 h-8" />,
-    title: "AI & Machine Learning",
-    description: "Custom AI solutions including LLMs, computer vision & NLP models. We help businesses leverage artificial intelligence to automate processes and gain insights.",
-    link: "/services/ai"
+    title: "AI & ML",
+    services: [
+      {
+        icon: <Bot className="w-8 h-8" />,
+        title: "Custom AI Solutions",
+        description: "LLMs, Computer Vision & NLP models. We develop cutting-edge AI solutions tailored to your specific business needs.",
+        link: "/services/ai/custom-solutions"
+      },
+      {
+        icon: <Cpu className="w-8 h-8" />,
+        title: "AI Integration",
+        description: "Seamless AI implementation for your business. We help integrate AI capabilities into your existing systems and workflows.",
+        link: "/services/ai/integration"
+      }
+    ]
   },
   {
-    icon: <Braces className="w-8 h-8" />,
-    title: "Web3 Development",
-    description: "Building decentralized applications, smart contracts, and blockchain solutions. From DeFi to NFTs, we're at the forefront of Web3 innovation.",
-    link: "/services/web3"
+    title: "BLOCKCHAIN",
+    services: [
+      {
+        icon: <ScrollText className="w-8 h-8" />,
+        title: "Smart Contracts",
+        description: "Secure & audited contract development. We create reliable and efficient smart contracts for your blockchain applications.",
+        link: "/services/blockchain/smart-contracts"
+      },
+      {
+        icon: <Blocks className="w-8 h-8" />,
+        title: "DeFi Platforms",
+        description: "Custom DeFi & Web3 solutions. We build decentralized platforms that revolutionize financial services.",
+        link: "/services/blockchain/defi"
+      }
+    ]
   },
   {
-    icon: <Code className="w-8 h-8" />,
-    title: "Full-Stack Development",
-    description: "End-to-end development solutions, from frontend and backend to cloud infrastructure, ensuring seamless integration and optimal performance.",
-    link: "/services/development"
-  },
-  {
-    icon: <Palette className="w-8 h-8" />,
-    title: "UX/UI Design",
-    description: "Creating intuitive and beautiful user experiences through research-driven design. We focus on user-centered design principles to deliver engaging interfaces.",
-    link: "/services/design"
-  },
-  {
-    icon: <Database className="w-8 h-8" />,
-    title: "Cloud Solutions",
-    description: "Scalable cloud infrastructure and DevOps practices. We help businesses migrate, optimize, and manage their cloud presence effectively.",
-    link: "/services/cloud"
-  },
-  {
-    icon: <Lock className="w-8 h-8" />,
-    title: "Security & Auditing",
-    description: "Comprehensive security audits and implementations. We ensure your applications are protected against vulnerabilities and comply with standards.",
-    link: "/services/security"
+    title: "DEVELOPMENT",
+    services: [
+      {
+        icon: <Globe className="w-8 h-8" />,
+        title: "Web & Mobile",
+        description: "Full-stack apps with modern tech. We create responsive and scalable applications for web and mobile platforms.",
+        link: "/services/development/web-mobile"
+      },
+      {
+        icon: <Zap className="w-8 h-8" />,
+        title: "API & Backend",
+        description: "Scalable & secure architectures. We design and implement robust backend systems that power your applications.",
+        link: "/services/development/api-backend"
+      }
+    ]
   }
 ];
 
@@ -81,46 +96,63 @@ const Services = () => {
           </div>
         </section>
 
-        {/* Services Grid */}
-        <section className="py-32 relative">
-          <div className="container mx-auto px-4 sm:px-6 lg:px-8">
-            <div className="grid grid-cols-1 md:grid-cols-2 gap-12">
-              {services.map((service, index) => (
-                <motion.div
-                  key={service.title}
-                  initial={{ opacity: 0, y: 40 }}
+        {/* Services Categories */}
+        <section className="py-16">
+          <div className="container mx-auto px-4">
+            {serviceCategories.map((category, categoryIndex) => (
+              <div key={category.title} className="mb-24 last:mb-0">
+                <motion.h2
+                  initial={{ opacity: 0, y: 20 }}
                   whileInView={{ opacity: 1, y: 0 }}
                   viewport={{ once: true }}
-                  transition={{ delay: index * 0.1, duration: 0.8, ease: [0.16, 1, 0.3, 1] }}
-                  className="group relative"
+                  transition={{ delay: categoryIndex * 0.1 }}
+                  className="text-[#4ADE80] text-sm font-medium tracking-wider uppercase mb-12"
                 >
-                  <div className="relative">
-                    <a 
-                      href={service.link}
-                      className="block relative p-8 h-full transition-all duration-300"
+                  {category.title}
+                </motion.h2>
+
+                <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
+                  {category.services.map((service, serviceIndex) => (
+                    <motion.div
+                      key={service.title}
+                      initial={{ opacity: 0, y: 40 }}
+                      whileInView={{ opacity: 1, y: 0 }}
+                      viewport={{ once: true }}
+                      transition={{ delay: (categoryIndex * 0.2) + (serviceIndex * 0.1) }}
+                      className="group relative"
                     >
-                      <div className="flex flex-col h-full">
-                        <div className="mb-8 text-[#4ADE80]">
-                          {service.icon}
-                        </div>
-                        
-                        <h3 className="text-3xl font-light text-white mb-6 tracking-tight">
-                          {service.title}
-                        </h3>
-                        
-                        <p className="text-gray-400/80 text-lg mb-6 leading-relaxed">
-                          {service.description}
-                        </p>
-                        
-                        <button className="w-fit px-8 py-4 rounded-full border border-white/10 text-white hover:bg-white/5 transition-all duration-300 text-sm font-medium">
-                          Find out more
-                        </button>
+                      <div className="relative rounded-2xl bg-gradient-to-b from-white/5 to-transparent p-[1px] backdrop-blur-3xl">
+                        <a 
+                          href={service.link}
+                          className="block relative rounded-2xl bg-black/50 backdrop-blur-xl p-8 h-full transition-all duration-300"
+                        >
+                          <div className="flex flex-col h-full">
+                            <div className="mb-8 text-[#4ADE80]">
+                              {service.icon}
+                            </div>
+                            
+                            <h3 className="text-2xl font-medium text-white mb-4">
+                              {service.title}
+                            </h3>
+                            
+                            <p className="text-gray-400/80 text-base mb-8 leading-relaxed">
+                              {service.description}
+                            </p>
+                            
+                            <div className="mt-auto">
+                              <button className="group/btn w-fit px-6 py-3 rounded-full border border-white/10 text-white hover:bg-white/5 transition-all duration-300 text-sm font-medium inline-flex items-center gap-2">
+                                Learn more
+                                <ArrowUpRight className="w-4 h-4 transition-transform group-hover/btn:rotate-45" />
+                              </button>
+                            </div>
+                          </div>
+                        </a>
                       </div>
-                    </a>
-                  </div>
-                </motion.div>
-              ))}
-            </div>
+                    </motion.div>
+                  ))}
+                </div>
+              </div>
+            ))}
           </div>
         </section>
 

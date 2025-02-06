@@ -10,20 +10,7 @@ interface DropdownItem {
   icon?: string;
 }
 
-interface NavItem {
-  title: string;
-  href: string;
-  dropdown?: {
-    type: 'services' | 'industries';
-    items: {
-      category?: string;
-      items: DropdownItem[];
-    }[];
-  };
-}
-
 const navigation: NavItem[] = [
-  { title: 'Works', href: '/works' },
   { 
     title: 'Services',
     href: '/services',
@@ -79,7 +66,10 @@ const navigation: NavItem[] = [
     }
   },
 
+  { title: 'Projects', href: '/works' },
+  { title: 'Blog', href: '/blog' },
   { title: 'About', href: '/about' },
+  { title: 'Contact', href: '/contact' }
 ];
 
 export default function Layout({ children }: { children: React.ReactNode }) {
@@ -107,9 +97,9 @@ export default function Layout({ children }: { children: React.ReactNode }) {
   };
   return (
     <div className="min-h-screen bg-black text-gray-100">
-      <nav className="bg-black/50 backdrop-blur-lg fixed w-full z-50 border-b border-white/10 overflow-x-clip">
+      <nav className="fixed w-full z-50 overflow-x-clip bg-[#111]/80 backdrop-blur-md">
         <div className="container mx-auto px-4 relative">
-          <div className="flex items-center justify-between h-16">
+          <div className="flex items-center justify-between h-20">
             <div className="flex-shrink-0">
               <a href="/" className="block">
                 <img 
@@ -120,7 +110,8 @@ export default function Layout({ children }: { children: React.ReactNode }) {
               </a>
             </div>
             <div className="hidden md:block flex-1">
-              <div className="ml-10 flex items-baseline space-x-4">
+              <div className="flex items-center justify-end">
+                <div className="bg-[#222]/80 backdrop-blur-md rounded-full p-1.5 flex items-center gap-1">
                 {navigation.map((item) => (
                   <div
                     key={item.href}
@@ -130,15 +121,15 @@ export default function Layout({ children }: { children: React.ReactNode }) {
                   >
                     <Link
                       to={item.href}
-                      className={`px-3 py-2 inline-flex items-center text-sm font-medium tracking-wide transition-colors ${
+                      className={`px-5 py-2 rounded-full inline-flex items-center text-sm font-medium tracking-wide transition-all duration-200 ${
                         location.pathname === item.href
-                          ? 'text-white'
-                          : 'text-gray-300 hover:text-white'
+                          ? 'text-white bg-white/10'
+                          : 'text-gray-300 hover:text-white hover:bg-white/5'
                       }`}
                     >
                       {item.title}
                       {item.dropdown && (
-                        <ChevronDown className={`ml-1 h-4 w-4 transition-transform ${
+                        <ChevronDown className={`ml-1.5 h-4 w-4 transition-transform duration-200 ${
                           activeDropdown === item.title ? 'rotate-180' : ''
                         }`} />
                       )}
@@ -151,7 +142,7 @@ export default function Layout({ children }: { children: React.ReactNode }) {
                           animate={{ opacity: 1, y: 0 }}
                           exit={{ opacity: 0, y: 10 }}
                           transition={{ duration: 0.15 }}
-                          className="absolute left-0 top-full mt-1 w-[280px] bg-black/95 backdrop-blur-xl rounded-2xl shadow-2xl border border-white/10"
+                          className="absolute right-0 top-full mt-2 w-[280px] bg-[#111]/95 backdrop-blur-xl rounded-2xl shadow-2xl border border-white/10"
                           style={{ zIndex: 50 }}
                         >
                           <div className="p-2">
@@ -193,15 +184,10 @@ export default function Layout({ children }: { children: React.ReactNode }) {
                     </AnimatePresence>
                   </div>
                 ))}
+                </div>
               </div>
             </div>
             <div className="flex items-center gap-4">
-              <a
-                href="/contact"
-                className="hidden md:inline-flex items-center px-4 py-2 rounded-full bg-white text-black hover:bg-gray-100 transition-colors text-sm font-medium"
-              >
-                Contact Us
-              </a>
               <div className="md:hidden">
                 <button
                   onClick={() => setIsMenuOpen(!isMenuOpen)}
@@ -214,7 +200,13 @@ export default function Layout({ children }: { children: React.ReactNode }) {
           </div>
         </div>
         {isMenuOpen && (
-          <div className="md:hidden">
+          <motion.div
+            initial={{ opacity: 0, y: -20 }}
+            animate={{ opacity: 1, y: 0 }}
+            exit={{ opacity: 0, y: -20 }}
+            transition={{ duration: 0.2 }}
+            className="md:hidden fixed inset-x-0 top-20 bg-[#111]/95 backdrop-blur-xl border-t border-white/10"
+          >
             <div className="px-4 pt-2 pb-3 space-y-2 max-h-[80vh] overflow-y-auto">
               {navigation.map((item) => (
                 <div key={item.href} className="space-y-2">
@@ -222,7 +214,7 @@ export default function Layout({ children }: { children: React.ReactNode }) {
                     {item.dropdown ? (
                       <button
                         onClick={() => toggleMobileDropdown(item.title)}
-                        className="flex items-center justify-between w-full py-2 text-base font-medium text-gray-300 hover:text-white"
+                        className="flex items-center justify-between w-full px-4 py-3 text-base font-medium text-gray-300 hover:text-white rounded-lg hover:bg-white/5 transition-all duration-200"
                       >
                         {item.title}
                         <ChevronDown className={`ml-1 h-4 w-4 transition-transform ${
@@ -232,7 +224,7 @@ export default function Layout({ children }: { children: React.ReactNode }) {
                     ) : (
                       <Link
                         to={item.href}
-                        className="block py-2 text-base font-medium text-gray-300 hover:text-white"
+                        className="block px-4 py-3 text-base font-medium text-gray-300 hover:text-white rounded-lg hover:bg-white/5 transition-all duration-200"
                         onClick={() => setIsMenuOpen(false)}
                       >
                         {item.title}
@@ -245,12 +237,13 @@ export default function Layout({ children }: { children: React.ReactNode }) {
                       initial={{ opacity: 0, height: 0 }}
                       animate={{ opacity: 1, height: "auto" }}
                       exit={{ opacity: 0, height: 0 }}
+                      transition={{ duration: 0.2 }}
                       className="pl-4 space-y-6"
                     >
                       {item.dropdown.items.map((section, idx) => (
                         <div key={idx} className="space-y-4">
                           {section.category && (
-                            <h3 className="text-sm font-medium text-[#4ADE80] tracking-wider uppercase pt-2">
+                            <h3 className="text-sm font-medium text-[#4ADE80] tracking-wider uppercase pt-2 px-4">
                               {section.category}
                             </h3>
                           )}
@@ -259,12 +252,19 @@ export default function Layout({ children }: { children: React.ReactNode }) {
                               <a
                                 key={itemIdx}
                                 href="#"
-                                className="group block space-y-1 rounded-xl p-3 transition-all duration-200 hover:bg-white/5 border border-transparent hover:border-white/10"
+                                className="group block space-y-1 rounded-xl p-4 transition-all duration-200 hover:bg-white/5 border border-transparent hover:border-white/10 mx-2"
                                 onClick={() => setIsMenuOpen(false)}
                               >
+                                <div className="flex items-center gap-3 mb-2">
+                                  {dropdownItem.icon && (
+                                    <div className="flex-shrink-0 w-8 h-8 rounded-lg bg-white/5 flex items-center justify-center text-base">
+                                      {dropdownItem.icon}
+                                    </div>
+                                  )}
                                 <p className="text-base font-medium text-white group-hover:text-[#4ADE80] transition-colors">
                                   {dropdownItem.title}
                                 </p>
+                                </div>
                                 <p className="text-sm text-white/50 group-hover:text-white/70 transition-colors">
                                   {dropdownItem.description}
                                 </p>
@@ -275,11 +275,13 @@ export default function Layout({ children }: { children: React.ReactNode }) {
                       ))}
                       <div className="py-4 mt-4 border-t border-white/10">
                         <div className="space-y-3">
-                          <p className="text-sm font-medium text-white">Need help choosing?</p>
-                          <p className="text-sm text-white/60">We'll help you find the right solution</p>
+                          <div className="px-4">
+                            <p className="text-sm font-medium text-white">Need help choosing?</p>
+                            <p className="text-sm text-white/60">We'll help you find the right solution</p>
+                          </div>
                           <Link
                             to="/contact"
-                            className="inline-flex items-center px-4 py-2 rounded-full bg-white text-black hover:bg-gray-100 transition-colors text-sm font-medium"
+                            className="inline-flex items-center px-6 py-3 mx-4 rounded-full bg-white text-black hover:bg-gray-100 transition-colors text-sm font-medium"
                             onClick={() => setIsMenuOpen(false)}
                           >
                             Contact Us
@@ -293,13 +295,13 @@ export default function Layout({ children }: { children: React.ReactNode }) {
               ))}
               <Link
                 to="/contact"
-                className="block py-2 text-base font-medium text-gray-300 hover:text-white"
+                className="block px-4 py-3 text-base font-medium text-gray-300 hover:text-white rounded-lg hover:bg-white/5 transition-all duration-200"
                 onClick={() => setIsMenuOpen(false)}
               >
                 Contact Us
               </Link>
             </div>
-          </div>
+          </motion.div>
         )}
       </nav>
 
