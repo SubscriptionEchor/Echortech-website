@@ -1,7 +1,7 @@
 import React from 'react';
 import { motion } from 'framer-motion';
 import Layout from '../components/Layout';
-import { Mail, ArrowUpRight } from 'lucide-react';
+import { Mail, ArrowUpRight, ChevronDown } from 'lucide-react';
 
 interface Project {
   title: string;
@@ -50,45 +50,72 @@ const projects: Project[] = [
 ];
 
 const Works = () => {
+  const scrollToProjects = () => {
+    const projectsSection = document.getElementById('projects-section');
+    if (projectsSection) {
+      projectsSection.scrollIntoView({ behavior: 'smooth' });
+    }
+  };
+
   return (
     <Layout>
-      <div className="min-h-screen bg-black">
+      <div className="min-h-screen bg-black selection:bg-white/20">
         {/* Hero Section */}
-        <section className="pt-32 pb-16 relative">
+        <section className="min-h-screen relative flex flex-col justify-between py-32">
           <div className="absolute inset-0">
-            <div className="absolute inset-0 bg-[radial-gradient(circle_at_center,rgba(99,102,241,0.08)_0%,transparent_100%)]" />
+            <div className="absolute inset-0">
+              <div className="absolute inset-0 bg-[linear-gradient(to_right,rgba(0,0,0,0.8),transparent_50%)]" />
+              <div className="absolute inset-0 bg-[radial-gradient(circle_at_center,rgba(99,102,241,0.02)_0%,transparent_100%)]" />
+            </div>
           </div>
           
-          <div className="container mx-auto px-4">
+          <div className="container mx-auto px-4 sm:px-6 lg:px-8">
             <motion.div 
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.6 }}
-              className="max-w-4xl"
+              className="space-y-4"
             >
-              <motion.span
-                initial={{ opacity: 0 }}
-                animate={{ opacity: 1 }}
-                transition={{ delay: 0.2 }}
-                className="text-[#4ADE80] text-sm font-medium tracking-wider uppercase mb-4 block"
-              >
-                All Projects
-              </motion.span>
-              
-              <motion.h1
-                initial={{ opacity: 0, y: 20 }}
-                animate={{ opacity: 1, y: 0 }}
-                transition={{ delay: 0.3 }}
-                className="text-5xl md:text-7xl font-medium text-white mb-6"
-              >
-                Selected Projects
-              </motion.h1>
+              <h1 className="text-[12vw] sm:text-[10vw] md:text-[8vw] font-light text-white/80 leading-[0.9] tracking-[-0.02em]">
+                projects
+              </h1>
             </motion.div>
+
+            <motion.div
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ delay: 0.3, duration: 0.6 }}
+              className="mt-32 max-w-4xl"
+            >
+              <p
+                className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-extralight text-white/60 leading-[1.2] tracking-[-0.02em]"
+              >
+                I help startups and series A—D teams to establish a strong connection between their product and customers
+              </p>
+            </motion.div>
+          </div>
+
+          <div className="container mx-auto px-4 sm:px-6 lg:px-8">
+            <motion.button
+              onClick={scrollToProjects}
+              type="button"
+              initial={{ opacity: 0 }}
+              animate={{ opacity: 1 }}
+              transition={{ delay: 0.4 }}
+              whileHover={{ y: 5 }}
+              className="flex items-center gap-4 text-white/60 hover:text-white/80 transition-colors group cursor-pointer w-auto"
+            >
+              <div className="flex items-center gap-4">
+                <div className="h-px w-12 bg-current" />
+                <span className="text-sm font-light tracking-wide">Scroll to explore</span>
+                <ChevronDown className="w-4 h-4 animate-bounce" />
+              </div>
+            </motion.button>
           </div>
         </section>
 
         {/* Projects Grid */}
-        <section className="py-16">
+        <section id="projects-section" className="py-16 scroll-mt-16">
           <div className="container mx-auto px-4">
             <div className="grid grid-cols-1 sm:grid-cols-2 gap-8 sm:gap-16">
               {projects.map((project, index) => (
