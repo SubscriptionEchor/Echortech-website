@@ -12,7 +12,7 @@ interface PillData {
   videoUrl: string;
 }
 
-function App() {
+const App = () => {
   const [activeVideo, setActiveVideo] = useState<string | null>(null);
   const [cardPosition, setCardPosition] = useState({ x: 0, y: 0 });
   const pillRefs = useRef<(HTMLDivElement | null)[]>([]);
@@ -75,14 +75,20 @@ function App() {
     <Layout>
       <main className="min-h-screen bg-black text-white">
         {/* Header Text */}
-        <div className="text-center pt-16 pb-8 px-4">
+        <div className="text-center pt-32 pb-16 px-4">
           <div className="text-sm text-gray-400 mb-2">
             AI + Product Design Agency // Hyderabad
           </div>
           <motion.h1
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
-            className="text-5xl md:text-7xl font-bold mb-8 max-w-5xl mx-auto leading-[1.1]"
+            transition={{ 
+              duration: 0.8,
+              type: "spring",
+              stiffness: 100,
+              damping: 20
+            }}
+            className="text-5xl sm:text-6xl md:text-7xl lg:text-8xl font-light text-white/80 leading-[1.1] tracking-[-0.02em] mb-12"
           >
             UX-First Design Agency
             <br />
@@ -91,8 +97,14 @@ function App() {
           <motion.p
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
-            transition={{ delay: 0.2 }}
-            className="text-lg space-x-2"
+            transition={{ 
+              delay: 0.3,
+              duration: 0.8,
+              type: "spring",
+              stiffness: 100,
+              damping: 20
+            }}
+            className="text-lg sm:text-xl md:text-2xl font-light text-white/60 leading-relaxed space-x-2 max-w-3xl mx-auto"
           >
             <span>We launch</span>
             <span className="text-[#4ADE80]">MVPs</span>
@@ -104,7 +116,7 @@ function App() {
         </div>
 
         {/* Video/Image Section */}
-        <div className="container mx-auto px-4 pt-8">
+        <div className="container mx-auto px-4 pt-16">
           <motion.div
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
@@ -1018,6 +1030,6 @@ function App() {
       </div>
     </Layout>
   );
-}
+};
 
 export default App;

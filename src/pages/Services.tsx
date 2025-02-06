@@ -72,13 +72,13 @@ const Services = () => {
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.8, ease: [0.16, 1, 0.3, 1] }}
-              className="max-w-4xl"
+              className="max-w-[1400px] mx-auto"
             >
               <motion.h1
                 initial={{ opacity: 0, y: 20 }}
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ delay: 0.2, duration: 0.8, ease: [0.16, 1, 0.3, 1] }}
-                className="text-6xl sm:text-8xl font-light text-white mb-12 leading-[1.1] tracking-[-0.02em]"
+                className="text-5xl sm:text-6xl md:text-7xl lg:text-8xl xl:text-9xl font-light text-white/80 leading-[1.1] tracking-[-0.02em] mb-12"
               >
                 Services
               </motion.h1>
@@ -87,7 +87,7 @@ const Services = () => {
                 initial={{ opacity: 0, y: 20 }}
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ delay: 0.3, duration: 0.8, ease: [0.16, 1, 0.3, 1] }}
-                className="text-xl text-gray-400/80 max-w-3xl leading-relaxed"
+                className="text-lg sm:text-xl md:text-2xl xl:text-3xl font-light text-white/60 leading-relaxed max-w-4xl xl:max-w-5xl"
               >
                 From AI development to blockchain solutions; innovative design to technical consultancy, 
                 we have services to empower every business and every vision.
@@ -104,7 +104,7 @@ const Services = () => {
           </div>
 
           <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 items-start">
+            <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 xl:gap-24 items-start">
               {/* Left Column */}
               <motion.div
                 initial={{ opacity: 0, x: -20 }}
@@ -141,7 +141,7 @@ const Services = () => {
                       transition={{ delay: index * 0.1 }}
                       className="group"
                     >
-                      <h3 className="text-[2.5rem] md:text-[3rem] lg:text-[3.5rem] font-light text-white group-hover:text-[#4ADE80] transition-colors duration-300 cursor-pointer leading-[1.1]">
+                      <h3 className="text-3xl sm:text-4xl md:text-5xl xl:text-6xl font-light text-white group-hover:text-[#4ADE80] transition-colors duration-300 cursor-pointer leading-[1.1]">
                         {service}
                       </h3>
                     </motion.div>
@@ -154,7 +154,7 @@ const Services = () => {
                 initial={{ opacity: 0, y: 20 }}
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true }}
-                className="relative lg:sticky lg:top-24"
+                className="relative lg:sticky lg:top-24 xl:top-32"
               >
                 <div className="relative rounded-2xl overflow-hidden bg-[#141414] border border-[#1A1D1A] aspect-[4/3]">
                   <video
@@ -208,7 +208,7 @@ const Services = () => {
                 initial={{ opacity: 0, y: 20 }}
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true }}
-                className="text-[2.5rem] sm:text-[3rem] font-light text-white leading-[1.1] tracking-[-0.02em] text-center mx-auto"
+                className="text-3xl sm:text-4xl md:text-5xl font-light text-white leading-[1.1] tracking-[-0.02em] text-center mx-auto"
               >
                 Warp keeps me in flow.
               </motion.h2>
@@ -244,7 +244,7 @@ const Services = () => {
 
         {/* Services Categories */}
         <section className="py-40">
-          <div className="container mx-auto px-4">
+          <div className="container mx-auto px-4 max-w-[1600px]">
             {serviceCategories.map((category, categoryIndex) => (
               <div key={category.title} className="mb-24 last:mb-0">
                 <motion.h2
@@ -257,7 +257,7 @@ const Services = () => {
                   {category.title}
                 </motion.h2>
 
-                <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
+                <div className="grid grid-cols-1 md:grid-cols-2 gap-8 xl:gap-12">
                   {category.services.map((service, serviceIndex) => (
                     <motion.div
                       key={service.title}
@@ -277,16 +277,16 @@ const Services = () => {
                               {service.icon}
                             </div>
                             
-                            <h3 className="text-2xl font-medium text-white mb-4">
+                            <h3 className="text-2xl xl:text-3xl font-light text-white mb-4">
                               {service.title}
                             </h3>
                             
-                            <p className="text-gray-400/80 text-base mb-8 leading-relaxed">
+                            <p className="text-gray-400/80 text-base xl:text-lg mb-8 leading-relaxed font-light">
                               {service.description}
                             </p>
                             
                             <div className="mt-auto">
-                              <button className="group/btn w-fit px-6 py-3 rounded-full border border-white/10 text-white hover:bg-white/5 transition-all duration-300 text-sm font-medium inline-flex items-center gap-2">
+                              <button className="group/btn w-fit px-6 py-3 xl:px-8 xl:py-4 rounded-full border border-white/10 text-white hover:bg-white/5 transition-all duration-300 text-sm xl:text-base font-medium inline-flex items-center gap-2">
                                 Learn more
                                 <ArrowUpRight className="w-4 h-4 transition-transform group-hover/btn:rotate-45" />
                               </button>

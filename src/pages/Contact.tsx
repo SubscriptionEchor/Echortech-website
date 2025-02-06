@@ -57,17 +57,34 @@ const Contact = () => {
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
           >
-            <h1 className="text-7xl font-light text-white mb-8 tracking-tight">
+            <motion.h1
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ 
+                duration: 0.8,
+                type: "spring",
+                stiffness: 100,
+                damping: 20
+              }}
+              className="text-[12vw] sm:text-[10vw] md:text-[8vw] font-light text-white/80 leading-[0.9] tracking-[-0.02em] mb-8"
+            >
               Hey! Tell us all
               <br />
               the things 👋
-            </h1>
+            </motion.h1>
           </motion.div>
 
           <motion.form
             onSubmit={handleSubmit}
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
+            transition={{ 
+              delay: 0.3,
+              duration: 0.8,
+              type: "spring",
+              stiffness: 100,
+              damping: 20
+            }}
             className="space-y-12"
           >
             <div className="relative space-y-12">

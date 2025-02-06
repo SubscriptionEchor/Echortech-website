@@ -1,7 +1,11 @@
 import React from 'react';
-import { motion } from 'framer-motion';
 import Layout from '../components/Layout';
 import { Mail, ArrowUpRight, ChevronDown } from 'lucide-react';
+import { motion, useScroll, useTransform, useSpring, MotionValue } from 'framer-motion';
+
+const useParallax = (value: MotionValue<number>, distance: number) => {
+  return useTransform(value, [0, 1], [-distance, distance]);
+};
 
 interface Project {
   title: string;
@@ -50,6 +54,13 @@ const projects: Project[] = [
 ];
 
 const Works = () => {
+  const { scrollYProgress } = useScroll();
+  const scaleX = useSpring(scrollYProgress, {
+    stiffness: 100,
+    damping: 30,
+    restDelta: 0.001
+  });
+
   const scrollToProjects = () => {
     const projectsSection = document.getElementById('projects-section');
     if (projectsSection) {
@@ -60,6 +71,12 @@ const Works = () => {
   return (
     <Layout>
       <div className="min-h-screen bg-black selection:bg-white/20">
+        {/* Progress Bar */}
+        <motion.div
+          className="fixed top-0 left-0 right-0 h-1 bg-white/20 origin-[0%] z-50"
+          style={{ scaleX }}
+        />
+
         {/* Hero Section */}
         <section className="min-h-screen relative flex flex-col justify-between py-32">
           <div className="absolute inset-0">
@@ -73,7 +90,12 @@ const Works = () => {
             <motion.div 
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.6 }}
+              transition={{ 
+                duration: 0.8,
+                type: "spring",
+                stiffness: 100,
+                damping: 20
+              }}
               className="space-y-4"
             >
               <h1 className="text-[12vw] sm:text-[10vw] md:text-[8vw] font-light text-white/80 leading-[0.9] tracking-[-0.02em]">
@@ -84,7 +106,13 @@ const Works = () => {
             <motion.div
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
-              transition={{ delay: 0.3, duration: 0.6 }}
+              transition={{ 
+                delay: 0.3,
+                duration: 0.8,
+                type: "spring",
+                stiffness: 100,
+                damping: 20
+              }}
               className="mt-32 max-w-4xl"
             >
               <p
@@ -100,7 +128,14 @@ const Works = () => {
               onClick={scrollToProjects}
               type="button"
               initial={{ opacity: 0 }}
-              animate={{ opacity: 1 }}
+              animate={{ 
+                opacity: 1,
+                y: [0, 10, 0],
+                transition: {
+                  repeat: Infinity,
+                  duration: 2
+                }
+              }}
               transition={{ delay: 0.4 }}
               whileHover={{ y: 5 }}
               className="flex items-center gap-4 text-white/60 hover:text-white/80 transition-colors group cursor-pointer w-auto"
@@ -123,8 +158,15 @@ const Works = () => {
                   key={project.title}
                   initial={{ opacity: 0, y: 40 }}
                   whileInView={{ opacity: 1, y: 0 }}
-                  viewport={{ once: true }}
-                  transition={{ delay: index * 0.2 }}
+                  viewport={{ 
+                    once: true,
+                    margin: "-100px"
+                  }}
+                  transition={{ 
+                    duration: 0.8,
+                    type: "spring",
+                    bounce: 0.2
+                  }}
                   className={`group relative flex flex-col ${
                     index % 2 === 1 ? 'sm:mt-48' : ''
                   }`}
@@ -137,7 +179,13 @@ const Works = () => {
                           src={project.image}
                           alt={project.title}
                           className="w-full aspect-square object-cover opacity-90"
-                          whileHover={{ scale: 1.05 }}
+                          whileHover={{ 
+                            scale: 1.05,
+                            transition: {
+                              duration: 0.6,
+                              ease: [0.33, 1, 0.68, 1]
+                            }
+                          }}
                           transition={{ duration: 0.6, ease: [0.33, 1, 0.68, 1] }}
                         />
                         <div className="absolute inset-0 bg-black/20 group-hover:bg-black/10 transition-colors" />
@@ -186,7 +234,13 @@ const Works = () => {
             <motion.button
               onClick={() => window.location.href = "mailto:hi@echortech.com"}
               whileHover={{ scale: 1.1 }}
-              whileTap={{ scale: 0.95 }}
+              whileTap={{ 
+                scale: 0.95,
+                transition: {
+                  type: "spring",
+                  stiffness: 400
+                }
+              }}
               className="w-24 h-24 sm:w-32 sm:h-32 rounded-full bg-white flex items-center justify-center group transition-all duration-300 hover:shadow-[0_0_50px_rgba(255,255,255,0.3)] mx-auto"
             >
               <Mail className="w-6 h-6 sm:w-8 sm:h-8 text-black transition-transform duration-300 group-hover:scale-110" />

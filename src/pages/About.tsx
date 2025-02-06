@@ -31,8 +31,13 @@ const About = () => {
             <motion.h1
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
-              transition={{ delay: 0.3 }}
-              className="text-5xl md:text-7xl font-medium tracking-tight text-white max-w-4xl mx-auto leading-[1.1]"
+              transition={{ 
+                duration: 0.8,
+                type: "spring",
+                stiffness: 100,
+                damping: 20
+              }}
+              className="text-5xl sm:text-6xl md:text-7xl lg:text-8xl font-light text-white/80 leading-[1.1] tracking-[-0.02em]"
             >
               Securely scale your
               <br />
@@ -42,8 +47,14 @@ const About = () => {
             <motion.p
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
-              transition={{ delay: 0.4 }}
-              className="text-xl text-gray-300 max-w-2xl mx-auto"
+              transition={{ 
+                delay: 0.3,
+                duration: 0.8,
+                type: "spring",
+                stiffness: 100,
+                damping: 20
+              }}
+              className="text-lg sm:text-xl md:text-2xl font-light text-white/60 leading-relaxed max-w-3xl mx-auto"
             >
               Connect your teams, stakeholders, and creative assets on a fast, secure cloud
               collaboration platform to accelerate your content velocity.
@@ -105,7 +116,7 @@ const About = () => {
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true }}
                 transition={{ delay: 0.3 }}
-                className="text-5xl md:text-7xl font-medium tracking-tight text-white"
+                className="text-4xl sm:text-5xl md:text-6xl font-light tracking-tight text-white leading-[1.1]"
               >
                 Results you can see.
               </motion.h2>
@@ -114,7 +125,7 @@ const About = () => {
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true }}
                 transition={{ delay: 0.4 }}
-                className="text-5xl md:text-7xl font-medium tracking-tight text-gray-500"
+                className="text-4xl sm:text-5xl md:text-6xl font-light tracking-tight text-gray-500 leading-[1.1]"
               >
                 And measure.
               </motion.h2>
@@ -156,7 +167,7 @@ const About = () => {
                     <div className="text-sm text-gray-400 mb-6 font-medium tracking-wider">
                       {stat.category}
                     </div>
-                    <div className="text-6xl font-medium text-white mb-4">
+                    <div className="text-4xl sm:text-5xl font-light text-white mb-4">
                       {stat.value}
                     </div>
                     <div className="text-gray-400">
@@ -190,7 +201,7 @@ const About = () => {
                 initial={{ opacity: 0, y: 20 }}
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true }}
-                className="text-4xl md:text-6xl font-medium tracking-tight text-white leading-[1.1]"
+                className="text-4xl sm:text-5xl md:text-6xl font-light tracking-tight text-white leading-[1.1]"
               >
                 We're crafting the project planning tool for teams that care about quality
               </motion.h2>
@@ -227,7 +238,7 @@ const About = () => {
             <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 items-start">
               {/* Left Column */}
               <div className="space-y-8">
-                <h3 className="text-4xl md:text-5xl font-medium tracking-tight text-white">
+                <h3 className="text-3xl sm:text-4xl md:text-5xl font-light tracking-tight text-white leading-[1.1]">
                   We care deeply about the quality of our work
                 </h3>
                 <p className="text-gray-300 text-lg leading-relaxed">
@@ -271,7 +282,7 @@ const About = () => {
               initial={{ opacity: 0, y: 20 }}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
-              className="text-4xl md:text-6xl font-medium tracking-tight text-white leading-[1.1]"
+              className="text-4xl sm:text-5xl md:text-6xl font-light tracking-tight text-white leading-[1.1]"
             >
               Meet our team
             </motion.h2>
@@ -447,7 +458,7 @@ const About = () => {
               initial={{ opacity: 0, y: 20 }}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
-              className="text-4xl md:text-6xl font-medium tracking-tight text-white leading-[1.1]"
+              className="text-4xl sm:text-5xl md:text-6xl font-light tracking-tight text-white leading-[1.1]"
             >
               Built with independence
               <br />
@@ -493,8 +504,8 @@ const About = () => {
                   transition={{ delay: index * 0.1 }}
                   className="relative group"
                 >
-                  <div className="p-6 rounded-2xl bg-[#111]/80 backdrop-blur-sm border border-gray-800 hover:border-gray-700 transition-colors h-full">
-                    <h3 className="text-xl font-medium text-white mb-4">{item.title}</h3>
+                  <div className="p-8 rounded-2xl bg-[#111]/80 backdrop-blur-sm border border-gray-800 hover:border-gray-700 transition-colors h-full">
+                    <h3 className="text-2xl font-light text-white mb-4">{item.title}</h3>
                     <p className="text-gray-400 text-sm leading-relaxed">{item.description}</p>
                   </div>
                 </motion.div>
@@ -517,7 +528,7 @@ const About = () => {
                     />
                   </div>
                   <div className="text-left">
-                    <h3 className="text-xl font-medium text-white mb-2">Michael Chen</h3>
+                    <h3 className="text-2xl font-light text-white mb-2">Michael Chen</h3>
                     <p className="text-blue-300 text-sm mb-4">Founder & CEO</p>
                     <p className="text-gray-400 leading-relaxed">
                       "Our independence is our strength. Being bootstrapped means we can focus on what truly matters:
@@ -540,7 +551,7 @@ const About = () => {
             viewport={{ once: true }}
             className="text-center mb-12"
           >
-            <h2 className="text-4xl font-medium text-white mb-4">
+            <h2 className="text-4xl sm:text-5xl font-light text-white mb-4">
               Frequently asked questions
             </h2>
             <p className="text-gray-400">
@@ -601,15 +612,15 @@ const About = () => {
                 viewport={{ once: true }}
                 className="group"
               >
-                <details className="group">
+                <details className="group rounded-xl overflow-hidden">
                   <summary className="flex items-center justify-between cursor-pointer p-4 rounded-lg bg-[#141414] border border-[#1A1D1A] hover:border-[#2A2F2A] transition-colors">
-                    <span className="text-white font-medium">{faq.question}</span>
+                    <span className="text-white font-light text-lg">{faq.question}</span>
                     <span className="relative flex-shrink-0 ml-1.5 w-5 h-5">
                       <Plus className="absolute inset-0 w-5 h-5 opacity-100 group-open:opacity-0 transition-opacity" />
                       <Minus className="absolute inset-0 w-5 h-5 opacity-0 group-open:opacity-100 transition-opacity" />
                     </span>
                   </summary>
-                  <div className="px-4 pb-4 pt-2">
+                  <div className="px-4 py-6">
                     <p className="text-gray-400">{faq.answer}</p>
                   </div>
                 </details>

@@ -3,24 +3,34 @@
 @tailwind utilities;
 
 @layer base {
+  h1, h2, h3, h4, h5, h6 {
+    @apply font-light tracking-[-0.02em] leading-[0.9];
+  }
+  
+  .display-text {
+    @apply text-[12vw] sm:text-[10vw] md:text-[8vw] font-light leading-[0.9] tracking-[-0.02em];
+  }
+  
+  .heading-xl {
+    @apply text-5xl sm:text-6xl md:text-7xl font-light leading-[1.1] tracking-[-0.02em];
+  }
+  
+  .heading-lg {
+    @apply text-4xl sm:text-5xl md:text-6xl font-light leading-[1.1] tracking-[-0.02em];
+  }
+  
+  .heading-md {
+    @apply text-3xl sm:text-4xl md:text-5xl font-light leading-[1.1] tracking-[-0.02em];
+  }
+  
+  .heading-sm {
+    @apply text-2xl sm:text-3xl md:text-4xl font-light leading-[1.1] tracking-[-0.02em];
+  }
+}
+
+@layer base {
   html {
     font-feature-settings: "ss01", "ss02", "cv01", "cv02";
-  }
-  
-  h1, h2, h3, h4, h5, h6 {
-    @apply font-bold tracking-tight leading-tight;
-  }
-  
-  h1 {
-    @apply text-5xl md:text-7xl;
-  }
-  
-  h2 {
-    @apply text-3xl md:text-5xl;
-  }
-  
-  h3 {
-    @apply text-2xl md:text-3xl;
   }
 }
 
