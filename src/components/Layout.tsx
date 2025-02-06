@@ -67,7 +67,6 @@ const navigation: NavItem[] = [
   },
 
   { title: 'Projects', href: '/works' },
-  { title: 'Blog', href: '/blog' },
   { title: 'About', href: '/about' },
   { title: 'Contact', href: '/contact' }
 ];

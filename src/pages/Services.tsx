@@ -62,7 +62,7 @@ const Services = () => {
     <Layout>
       <div className="min-h-screen bg-black">
         {/* Hero Section */}
-        <section className="pt-32 pb-24 relative">
+        <section className="pt-40 pb-32 relative">
           <div className="absolute inset-0">
             <div className="absolute inset-0" />
           </div>
@@ -96,8 +96,154 @@ const Services = () => {
           </div>
         </section>
 
+        {/* What We Do Section */}
+        <section className="relative py-40 overflow-hidden">
+          <div className="absolute inset-0">
+            <div className="absolute inset-0 bg-black" />
+            <div className="absolute inset-0 bg-[radial-gradient(circle_at_center,rgba(0,100,255,0.02)_0%,transparent_100%)]" />
+          </div>
+
+          <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 items-start">
+              {/* Left Column */}
+              <motion.div
+                initial={{ opacity: 0, x: -20 }}
+                whileInView={{ opacity: 1, x: 0 }}
+                viewport={{ once: true }}
+                className="space-y-8"
+              >
+                <motion.span
+                  initial={{ opacity: 0 }}
+                  whileInView={{ opacity: 1 }}
+                  viewport={{ once: true }}
+                  className="text-sm text-[#4ADE80] tracking-wider uppercase"
+                >
+                  WHAT WE DO
+                </motion.span>
+                
+                <div className="space-y-4">
+                  {[
+                    'Brand Identity',
+                    'Brand Strategy',
+                    'Visual Identities',
+                    'Web Strategy',
+                    'Web Design',
+                    'Web Development',
+                    'Product Strategy',
+                    'Product Design',
+                    'Design Support'
+                  ].map((service, index) => (
+                    <motion.div
+                      key={service}
+                      initial={{ opacity: 0, y: 20 }}
+                      whileInView={{ opacity: 1, y: 0 }}
+                      viewport={{ once: true }}
+                      transition={{ delay: index * 0.1 }}
+                      className="group"
+                    >
+                      <h3 className="text-[2.5rem] md:text-[3rem] lg:text-[3.5rem] font-light text-white group-hover:text-[#4ADE80] transition-colors duration-300 cursor-pointer leading-[1.1]">
+                        {service}
+                      </h3>
+                    </motion.div>
+                  ))}
+                </div>
+              </motion.div>
+
+              {/* Right Column - Video */}
+              <motion.div
+                initial={{ opacity: 0, y: 20 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true }}
+                className="relative lg:sticky lg:top-24"
+              >
+                <div className="relative rounded-2xl overflow-hidden bg-[#141414] border border-[#1A1D1A] aspect-[4/3]">
+                  <video
+                    autoPlay
+                    loop
+                    muted
+                    playsInline
+                    className="w-full h-full object-cover"
+                  >
+                    <source
+                      src="https://framerusercontent.com/assets/AVIHD0z16SJz3u3yduZYEYNNSU.mp4"
+                      type="video/mp4"
+                    />
+                  </video>
+                </div>
+              </motion.div>
+            </div>
+          </div>
+        </section>
+
+        {/* Testimonial Section */}
+        <section className="relative py-40 overflow-hidden">
+          <div className="absolute inset-0">
+            <div className="absolute inset-0 bg-black" />
+            <div className="absolute inset-0 bg-[radial-gradient(circle_at_center,rgba(0,100,255,0.02)_0%,transparent_100%)]" />
+          </div>
+
+          <motion.div
+            className="relative z-10 max-w-4xl mx-auto px-4 sm:px-6 lg:px-8"
+            initial={{ opacity: 0 }}
+            whileInView={{ opacity: 1 }}
+            viewport={{ once: true }}
+          >
+            <div className="flex flex-col items-center text-center gap-12">
+              {/* Logo */}
+              <motion.div
+                initial={{ opacity: 0, y: 20 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true }}
+                className="flex justify-center w-full"
+              >
+                <img
+                  src="https://www.warp.dev/static/image/r/w=1920,q=50,format=auto/launch_darkly_482664c6eb.svg"
+                  alt="LaunchDarkly"
+                  className="h-8 mx-auto"
+                />
+              </motion.div>
+
+              {/* Content */}
+              <motion.h2
+                initial={{ opacity: 0, y: 20 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true }}
+                className="text-[2.5rem] sm:text-[3rem] font-light text-white leading-[1.1] tracking-[-0.02em] text-center mx-auto"
+              >
+                Warp keeps me in flow.
+              </motion.h2>
+
+              <motion.p
+                initial={{ opacity: 0, y: 20 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true }}
+                className="text-lg text-gray-400/80 max-w-2xl leading-relaxed text-center mx-auto"
+              >
+                Warp has been the one tool I've continuously reached for time and time again. It's helped me level up my skills as a developer, and it keeps me in the flow thanks to the ability to ask questions right from the command line.
+              </motion.p>
+
+              <motion.div
+                initial={{ opacity: 0, y: 20 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true }}
+                className="flex flex-col items-center gap-4"
+              >
+                <img
+                  src="https://images.unsplash.com/photo-1494790108377-be9c29b29330?auto=format&fit=crop&q=80&w=120&h=120"
+                  alt="Erin Mikail Staples"
+                  className="w-14 h-14 rounded-full object-cover"
+                />
+                <div className="text-center">
+                  <h3 className="text-white text-base font-medium">Erin Mikail Staples</h3>
+                  <p className="text-gray-400 text-sm">Developer Experience Engineer at LaunchDarkly</p>
+                </div>
+              </motion.div>
+            </div>
+          </motion.div>
+        </section>
+
         {/* Services Categories */}
-        <section className="py-16">
+        <section className="py-40">
           <div className="container mx-auto px-4">
             {serviceCategories.map((category, categoryIndex) => (
               <div key={category.title} className="mb-24 last:mb-0">
@@ -157,7 +303,7 @@ const Services = () => {
         </section>
 
         {/* Let's chat section */}
-        <div className="relative py-32 overflow-hidden flex flex-col items-center justify-center">
+        <div className="relative py-40 overflow-hidden flex flex-col items-center justify-center">
           <div className="absolute inset-0 w-full whitespace-nowrap text-[8vw] font-light text-white pointer-events-none select-none flex items-center">
             <div className="flex animate-marquee">
               Let's chat — hi@echortech.com — Let's chat — hi@echortech.com —
