@@ -163,19 +163,18 @@ export default function Layout({ children }: { children: React.ReactNode }) {
                                     <a
                                       key={itemIdx}
                                       href={dropdownItem.link || '#'}
-                                      className="group flex items-center gap-3 rounded-lg px-3 py-2 transition-all duration-200 hover:bg-white/5"
+                                     className="group flex items-center gap-3 rounded-lg px-3 py-2 transition-all duration-200 hover:bg-white/5 cursor-pointer"
                                       onClick={(e) => {
                                         e.preventDefault();
                                         if (dropdownItem.link) {
                                           const [path, hash] = dropdownItem.link.split('#');
-                                          if (location.pathname !== path) {
-                                            window.location.href = dropdownItem.link;
-                                          } else if (hash) {
-                                            const element = document.getElementById(hash);
-                                            if (element) {
-                                              element.scrollIntoView({ behavior: 'smooth' });
-                                              setActiveDropdown(null);
-                                            }
+                                         if (location.pathname === '/services' && hash) {
+                                           // If we're already on the services page, just scroll
+                                           document.getElementById(hash)?.scrollIntoView({ behavior: 'smooth' });
+                                           setActiveDropdown(null);
+                                          } else {
+                                           // Navigate to services page with hash
+                                           window.location.href = `/services${hash ? '#' + hash : ''}`;
                                           }
                                         }
                                       }}
@@ -271,9 +270,22 @@ export default function Layout({ children }: { children: React.ReactNode }) {
                             {section.items.map((dropdownItem, itemIdx) => (
                               <a
                                 key={itemIdx}
-                                href="#"
-                                className="group block space-y-1 rounded-xl p-4 transition-all duration-200 hover:bg-white/5 border border-transparent hover:border-white/10 mx-2"
-                                onClick={() => setIsMenuOpen(false)}
+                                href={dropdownItem.link || '#'}
+                               className="group block space-y-1 rounded-xl p-4 transition-all duration-200 hover:bg-white/5 border border-transparent hover:border-white/10 mx-2 cursor-pointer"
+                                onClick={(e) => {
+                                  e.preventDefault();
+                                  if (dropdownItem.link) {
+                                    const [path, hash] = dropdownItem.link.split('#');
+                                    if (location.pathname === '/services' && hash) {
+                                      // If we're already on the services page, just scroll
+                                      document.getElementById(hash)?.scrollIntoView({ behavior: 'smooth' });
+                                      setIsMenuOpen(false);
+                                    } else {
+                                      // Navigate to services page with hash
+                                      window.location.href = `/services${hash ? '#' + hash : ''}`;
+                                    }
+                                  }
+                                }}
                               >
                                 <div className="flex items-center gap-3 mb-2">
                                   {dropdownItem.icon && (
